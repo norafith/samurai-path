@@ -1,0 +1,56 @@
+body {
+  background-color: #ffc0d3;
+  color: #fdeff4;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+#app-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 5.5fr;
+  grid-template-rows: 50px 15fr;
+  height: 100vh;
+  gap: 20px;
+}
+
+#app-wrapper > main {
+  margin-right: 50px;
+}
+
+#app-wrapper > main > section {
+  background-color: #383235;
+  padding: 25px;
+  border: 2px solid #fdeff4;
+  border-radius: 25px;
+  margin-bottom: 25px;
+}
+
+a {
+  color: #ff5c8d;
+}
+
+input[type="text"],
+textarea {
+  box-sizing: border-box;
+  resize: none;
+  height: 40px;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fdeff4;
+  transition: 0.25s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-bottom: 2px solid #ff5c8d;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #c7bec1;
+}

@@ -1,0 +1,47 @@
+.mainUserInfo {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  color: #ff5c8d;
+  display: flex;
+}
+
+.userProperties {
+  margin-left: 10px;
+}
+
+.firstName {
+  margin-right: 7px;
+}
+
+.firstName,
+.familyName {
+  font-weight: bold;
+}
+
+.firstName::after {
+  content: " ";
+}
+
+.familyName::after {
+  content: ", ";
+}
+
+.userLogo {
+  border: 2px solid #ff5c8d;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.userProperties {
+  height: 100%;
+  font-size: 1.25em;
+  height: fit-content;
+}
+
+.age::after {
+  content: " y. o.";
+}
