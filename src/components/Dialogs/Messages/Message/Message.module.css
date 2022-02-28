@@ -1,0 +1,14 @@
+.message.fromCurrUser {
+    align-self: flex-end;
+}
+
+.message {
+    align-self: flex-start;
+    margin: 10px 0;
+    background-color: #4a4346;
+    border-radius: 25px;
+    padding: 10px;
+    min-width: 60px;
+    max-width: 350px;
+    overflow-wrap: break-word;
+}

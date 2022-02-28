@@ -42,11 +42,12 @@ const state = {
       { userID: 5, name: "John" },
     ],
     messages: [
-      { text: "hello", id: 1 },
-      { text: "sidney", id: 2 },
-      { text: "can you see me?", id: 3 },
-      { text: "what are you so scared of", id: 4 },
-      { text: "dsadsadsad", id: 5 },
+      { text: "hello", messageID: 1, userID: 1 },
+      { text: "sidney", messageID: 2, userID: 1 },
+      { text: "can you see me?", messageID: 3, userID: 1 },
+      { text: "what are you so scared of", messageID: 4, userID: 1 },
+      { text: "0_0", messageID: 5, userID: 2 },
+      { text: "no", messageID: 5, userID: 2 },
     ],
   },
 };
