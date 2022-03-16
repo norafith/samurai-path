@@ -3,9 +3,14 @@ import classes from "./Message.module.css";
 
 function Message(props) {
   const currUserID = 2;
-
+	
+	let messageClass = classes.message;
+	if (props.userID == currUserID) {
+		messageClass += " " + classes.fromCurrUser;
+	}
+	
   return (
-    <div className={props.userID === currUserID ? `${classes.message} ${classes.fromCurrUser}` : classes.message}>{props.text}</div>
+    <div className={messageClass}>{props.text}</div>
   )
 }
 

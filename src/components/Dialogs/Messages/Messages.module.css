@@ -1,5 +1,9 @@
-.messages {
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
+.messages { 
+  position: relative;  
+}
+
+.messagesList {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
 }

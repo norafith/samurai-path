@@ -1,18 +1,26 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import classes from "./NavBar.module.css";
+import NavOption from "./NavOption/NavOption";
+import { changeNavBarOpenedStatusActionCreator } from "../../redux/navBarReducer";
 
+function NavBar(props) {
+  const navElements = props.store.getState().navBar.sectionList.map(option => <NavOption name={option} /> )
+  const navRef = React.createRef();
 
-function NavBar() {
-  return (
-    <nav className={classes.navbar}>
-      <ul className={classes.menu}>
-        <li><NavLink to="/profile"  className={(navData) => navData.isActive ? classes.active : "" }>Profile</NavLink></li>
-        <li><NavLink to="/dialogs" className={(navData) => navData.isActive ? classes.active : "" }>Dialogs</NavLink></li>
-        <li><NavLink to="/friends" className={(navData) => navData.isActive ? classes.active : "" }>Friends</NavLink></li>
-        <li><NavLink to="/news" className={(navData) => navData.isActive ? classes.active : "" }>News</NavLink></li>
-        <li><NavLink to="/music" className={(navData) => navData.isActive ? classes.active : "" }>Music</NavLink></li>  
-        <li className={classes.settings}><NavLink to="/settings">Settings</NavLink></li>
+  let navBarClass = classes.navbar;
+  if (props.store.getState().navBar.mobileStatus) {
+    navBarClass += " " + classes.mobile;
+  }
+
+  if (props.store.getState().navBar.openedStatus) {
+    navBarClass += " " + classes.active;
+  }
+	
+	return (
+    <nav ref={navRef} className={navBarClass}>
+      <div onClick={props.store.dispatch.bind(props.store, changeNavBarOpenedStatusActionCreator())} className={classes.closeBtn}>X</div>
+      <ul className={classes.menu}> 
+        {navElements}
       </ul>
     </nav>
   );

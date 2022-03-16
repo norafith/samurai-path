@@ -1,9 +1,15 @@
+import store from "./redux/redux-store";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-import state from "./redux/state";
+import media from "./media";
 
-ReactDOM.render(<App state={state} />, document.getElementById("root"));
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+function renderPage() {
+	ReactDOM.render(<App store={store} />, document.getElementById("root"));
+}
+
+renderPage();
+store.subscribe(renderPage);
+
+window.onresize = media;
+media(); // when window is loaded, window.onload triggers animation

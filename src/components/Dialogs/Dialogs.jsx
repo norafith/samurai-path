@@ -7,8 +7,8 @@ function Dialogs(props) {
   return (
     <main>
       <section className={classes.mainSection}>
-        <ChatList chatOptions={props.chatOptions} />
-        <Messages messages={props.messages} />
+        <ChatList store={props.store} />
+        <Messages store={props.store} />
       </section>
     </main>
   )

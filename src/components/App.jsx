@@ -11,18 +11,29 @@ import Friends from "./Friends/Friends";
 
 
 function App(props) {
+	
+	let appWrapperClass = "";
+	
+	if (props.store.getState().navBar.mobileStatus) {
+		appWrapperClass += " mobile";
+	}
+	
+	if (props.store.getState().navBar.openedStatus) {
+		appWrapperClass += " navBarOpened";
+	}
+	
   return (
     <BrowserRouter>
-      <div id="app-wrapper">
-        <Header />
-        <NavBar />
+      <div id="app-wrapper" className={appWrapperClass}>
+        <Header store={props.store} />
+        <NavBar store={props.store} />
         <Routes> 
-          <Route path="/profile" element={<Profile posts={props.state.profile.posts} />} />
-          <Route path="/dialogs/*" element={<Dialogs messages={props.state.dialogs.messages} chatOptions={props.state.dialogs.chatOptions} />} />
-          <Route path="/music" element={<Music/>} />
-          <Route path="/news" element={<News/>} />
-          <Route path="/settings" element={<Settings/>} />
-          <Route path="/friends" element={<Friends/>} />
+          <Route path="/profile" element={<Profile store={props.store} />} />
+          <Route path="/dialogs/*" element={<Dialogs store={props.store} />} />
+          <Route path="/music" element={<Music />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/friends" element={<Friends store={props.store} />} />
         </Routes>
       </div>
     </BrowserRouter>

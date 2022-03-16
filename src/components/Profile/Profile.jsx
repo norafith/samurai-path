@@ -5,11 +5,12 @@ import PostsBlock from "./PostsBlock/PostsBlock";
 import classes from "./Profile.module.css";
 
 function Profile(props) {
+	
   return (
     <main className={classes.profile}>
       <MainUserInfo />
       <UserDescription />
-      <PostsBlock posts={props.posts}/>
+      <PostsBlock store={props.store} />
     </main>
   )
 }

@@ -3,9 +3,7 @@ import classes from "./FriendSearchBar.module.css";
 
 function FriendSearchBar(props) {
   return (
-    <main>
-      Settings
-    </main>
+    <span></span>
   )
 }
 

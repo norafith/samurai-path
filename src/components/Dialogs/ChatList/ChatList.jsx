@@ -4,7 +4,7 @@ import classes from "./ChatList.module.css";
 import ChatSearchBar from "./ChatSearchBar/ChatSearchBar";
 
 function ChatList(props) {
-  const chatOptionsElements = props.chatOptions.map((option) => <ChatOption userID={option.userID} name={option.name} />);
+  const chatOptionsElements = props.store.getState().dialogs.chatOptions.map((option) => <ChatOption userID={option.userID} name={option.name} />);
 
   return (
     <ul className={classes.chatList}>

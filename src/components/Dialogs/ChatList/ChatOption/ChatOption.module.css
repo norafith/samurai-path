@@ -4,6 +4,9 @@
   display: flex;
   align-items: center;
   transition: 0.25s;
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .chatOption:not(.active):hover {
@@ -19,7 +22,6 @@
 .userLogo {
   width: 50px;
   height: 50px;
-  border: 2px solid #dfdfdf;
   border-radius: 50%;
 }
 
