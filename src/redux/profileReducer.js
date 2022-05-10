@@ -62,6 +62,9 @@ function profileReducer(state = initialState, action) {
 		case CHANGE_DRAFT_POST:
 			state.posts.draftPost = action.text;
 			break;
+
+    default:
+      
 	}
 	
 	return state;

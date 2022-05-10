@@ -26,6 +26,9 @@ function navBarReducer(state = initialState, action) {
 			state.mobileStatus = false;
 			state.openedStatus = true;
 			break;
+
+		default:
+			
 	}
 	
 	return state;

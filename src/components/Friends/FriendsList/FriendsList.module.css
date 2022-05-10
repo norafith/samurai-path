@@ -1,4 +1,16 @@
 .friendsList {
 	display: grid;
   height: 750px;
+  grid-template-columns: repeat(3, 1fr);
+  overflow: auto;
+  justify-content: center;
+}
+
+.friendsList.mobile {
+  grid-template-columns: 0.1fr minmax(220px, 1fr) 0.1fr;
+}
+
+.friendsList.mobile > span {
+  grid-column-start: 2;
+  grid-column-end: 3;
 }

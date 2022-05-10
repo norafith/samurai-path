@@ -42,6 +42,8 @@ function dialogsReducer(state = initialState, action) {
 		case CHANGE_DRAFT_MESSAGE:
 			state.messages.draftMessage = action.text;
 			break;
+		default:
+			
 	}
 	
 	return state;
