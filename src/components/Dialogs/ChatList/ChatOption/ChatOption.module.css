@@ -10,13 +10,13 @@
 }
 
 .chatOption:not(.active):hover {
-  background-color: #534d50;
+  background-color: #5A514B;
 }
 
 .chatOption.active {
-  color: #383235;
+  color: #463F3A;
   font-weight: bold;
-  background-color: #ff5c8d;
+  background-color: #BCB8B1;
 }
 
 .userLogo {

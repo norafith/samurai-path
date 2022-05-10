@@ -5,18 +5,15 @@ import { addPostActionCreator, changeDraftPostActionCreator } from "../../../../
 function CreatePost(props) {
   const textareaRef = React.createRef();
 
-  function createBtnHandler() {
-    props.store.dispatch(addPostActionCreator());
-  }
-
   function textareaInputHandler() {
-    props.store.dispatch(changeDraftPostActionCreator(textareaRef.current.value));
+    let text = textareaRef.current.value;
+    props.textareaInputHandler(text);
   }
 
   return (
     <div className={classes.createPost}>
-      <textarea onChange={textareaInputHandler} ref={textareaRef} className={classes.content} placeholder="Write something..." value={props.store.getState().profile.posts.draftPost}/>
-      <button onClick={createBtnHandler} className={classes.createButton}>Create</button>
+      <textarea onChange={textareaInputHandler} ref={textareaRef} className={classes.content} placeholder="Write something..." value={props.draftPostValue}/>
+      <button onClick={props.createBtnHandler} className={classes.createButton}>Create</button>
     </div>
   );
 }

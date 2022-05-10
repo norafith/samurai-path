@@ -1,6 +1,8 @@
+/* #E1FF3F - accent color */
+
 body {
-  background-color: #ffc0d3;
-  color: #fdeff4;
+  background-color: #8A817C;
+  color: #F4F3EE;
   font-size: 18px;
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -32,9 +34,9 @@ body {
 }
 
 #app-wrapper > main > section {
-  background-color: #383235;
+  background-color: #463F3A;
   padding: 25px;
-  border: 2px solid #fdeff4;
+  border: 1px solid #F4F3EE;
   border-radius: 25px;
   margin-bottom: 25px;
 }
@@ -53,14 +55,14 @@ textarea {
   font-family: inherit;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid #fdeff4;
+  border-bottom: 1px solid #F4F3EE;
   transition: 0.25s ease;
 }
 
 input[type="text"]:focus,
 textarea:focus {
   outline: none;
-  border-bottom: 2px solid #ff5c8d;
+  border-bottom: 1px solid #E1FF3F;
 }
 
 input[type="text"]::placeholder,
@@ -69,14 +71,14 @@ textarea::placeholder {
 }
 
 ::-webkit-scrollbar {
-  background-color: #4a4346;
+  background-color: #5e5650;
   padding: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #2e292c;
+  background-color: #302c29;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #292528;
+  background-color: #2a2624;
 }

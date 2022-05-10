@@ -3,7 +3,7 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  background-color: #4a4346;
+  background-color: #5e5650;
   border-radius: 25px;
   height: 300px;
   width: 200px;
@@ -21,7 +21,7 @@
 .name {
   font-size: 1.25em;
   font-weight: bold;
-  color: #ff5c8d;
+  color: #BCB8B1;
 }
 
 .content {

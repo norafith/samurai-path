@@ -1,5 +1,5 @@
 .likeAmount::before {
-  content: "❤️";
+  content: "💛";
 }
 
 .post {
@@ -18,8 +18,8 @@
 }
 
 .username {
-  color: #ff5c8d;
   font-weight: bold;
+  color: #BCB8B1;
 }
 
 .date {

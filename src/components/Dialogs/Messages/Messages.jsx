@@ -4,14 +4,18 @@ import classes from "./Messages.module.css";
 import WriteMessageBar from "./WriteMessageBar/WriteMessageBar"
 
 function Messages(props) {
-  const messageElements = props.store.getState().dialogs.messages.messagesList.map((message) => <Message text={message.text} messageID={message.messageID} userID={message.userID} />)
+  const messageElements = props.messagesList.map((message) => <Message text={message.text} messageID={message.messageID} userID={message.userID} />)
 
   return (
     <div className={classes.messages}>
       <div className={classes.messagesList}>
       {messageElements}
       </div>
-      <WriteMessageBar store={props.store} />
+      <WriteMessageBar 
+      	newMessage={props.newMessage} 
+      	inputHandler={props.inputHandler}
+      	draftMessage={props.draftMessage} 
+      />
     </div>
   )
 }

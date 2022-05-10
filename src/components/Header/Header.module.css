@@ -5,8 +5,8 @@
   height: 100%;
   width: 100%;
   grid-area: 1 / 1 / 1 / 3;
-  border-bottom: 2px solid #fdeff4;
-  background-color: #383235;
+  border-bottom: 1px solid #F4F3EE;
+  background-color: #463F3A;
 }
 
 .header > * {

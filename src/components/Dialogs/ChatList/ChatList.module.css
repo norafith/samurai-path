@@ -3,8 +3,8 @@
   flex-direction: column;
   padding: 25px 0;
   margin: 0;
-  border-right: 2px solid #dfdfdf;
-  background-color: #4a4346;
+  border-right: 1px solid #dfdfdf;
+  background-color: #5e5650;
   border-top-left-radius: inherit;
   border-bottom-left-radius: inherit;
 }

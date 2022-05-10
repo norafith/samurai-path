@@ -1,5 +1,4 @@
 .friendsList {
-  overflow: auto;
-  text-align: center;
+	display: grid;
   height: 750px;
 }

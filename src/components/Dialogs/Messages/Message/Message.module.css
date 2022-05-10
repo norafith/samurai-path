@@ -1,12 +1,12 @@
 .message.fromCurrUser {
   align-self: flex-end;
-	background: linear-gradient(45deg, #ab7183, #4a4346);
+  background: linear-gradient(45deg, #B3CB31, #5e5650);
 }
 
 .message {
   align-self: flex-start;
   margin: 10px 0;
-  background-color: #4a4346;
+  background-color: #5e5650;
   border-radius: 25px;
   padding: 10px;
   min-width: 60px;

@@ -1,7 +1,7 @@
 import React from "react";
 import MainUserInfo  from "./MainUserInfo/MainUserInfo"
 import UserDescription from "./UserDescription/UserDescription";
-import PostsBlock from "./PostsBlock/PostsBlock";
+import PostsBlockContainer from "./PostsBlock/PostsBlockContainer";
 import classes from "./Profile.module.css";
 
 function Profile(props) {
@@ -10,7 +10,7 @@ function Profile(props) {
     <main className={classes.profile}>
       <MainUserInfo />
       <UserDescription />
-      <PostsBlock store={props.store} />
+      <PostsBlockContainer store={props.store} />
     </main>
   )
 }
