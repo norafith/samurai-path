@@ -1,4 +1,3 @@
-import React from "react";
 import classes from "./PostsBlock.module.css";
 import Post from "./Post/Post";
 import CreatePost from "./CreatePost/CreatePost"

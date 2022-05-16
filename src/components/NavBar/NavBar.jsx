@@ -1,4 +1,3 @@
-import React from "react";
 import classes from "./NavBar.module.css";
 import NavOption from "./NavOption/NavOption";
 

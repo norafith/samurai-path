@@ -1,6 +1,4 @@
-import React from "react";
 import classes from "./UserDescription.module.css"
-
 
 function UserDescription() {
   return (

@@ -12,7 +12,8 @@ function SearchBar(props) {
   return (
     <input
       ref={searchRef}
-      type="text" 
+      type="text"
+      placeholder="Search"
       value={props.searchText} 
       className={classes.searchBar} 
       onChange={inputHandler}  

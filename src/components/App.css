@@ -67,7 +67,7 @@ textarea:focus {
 
 input[type="text"]::placeholder,
 textarea::placeholder {
-  color: #c7bec1;
+  color: #c2c0bd;
 }
 
 ::-webkit-scrollbar {

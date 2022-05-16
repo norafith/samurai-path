@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./CreatePost.module.css";
-import { addPostActionCreator, changeDraftPostActionCreator } from "../../../../redux/profileReducer";
 
 function CreatePost(props) {
   const textareaRef = React.createRef();
