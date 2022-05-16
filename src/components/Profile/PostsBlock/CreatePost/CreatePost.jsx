@@ -7,13 +7,13 @@ function CreatePost(props) {
 
   function textareaInputHandler() {
     let text = textareaRef.current.value;
-    props.textareaInputHandler(text);
+    props.changeDraftPost(text);
   }
 
   return (
     <div className={classes.createPost}>
       <textarea onChange={textareaInputHandler} ref={textareaRef} className={classes.content} placeholder="Write something..." value={props.draftPostValue}/>
-      <button onClick={props.createBtnHandler} className={classes.createButton}>Create</button>
+      <button onClick={props.addPost} className={classes.createButton}>Create</button>
     </div>
   );
 }

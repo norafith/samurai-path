@@ -1,14 +1,15 @@
 import React from "react";
 import classes from "./Dialogs.module.css";
-import ChatList from "./ChatList/ChatList";
+import ChatListContainer from "./ChatList/ChatListContainer";
 import MessagesContainer from "./Messages/MessagesContainer";
 
 function Dialogs(props) {
+  console.log("DSADSADAS")
   return (
     <main>
       <section className={classes.mainSection}>
-        <ChatList store={props.store} />
-        <MessagesContainer store={props.store} />
+        <ChatListContainer />
+        <MessagesContainer />
       </section>
     </main>
   )

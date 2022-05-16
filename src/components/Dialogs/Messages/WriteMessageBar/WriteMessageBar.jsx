@@ -12,7 +12,7 @@ function WriteMessage(props) {
 	
   function inputHandler() {
     let text = inputFieldRef.current.value;
-    props.inputHandler(text);
+    props.changeDraftMessage(text);
   }
   
   return (

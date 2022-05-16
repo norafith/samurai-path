@@ -1,6 +1,6 @@
 import "./App.css";
-import Header from "./Header/Header";
-import NavBar from "./NavBar/NavBar";
+import HeaderContainer from "./Header/HeaderContainer";
+import NavBarContainer from "./NavBar/NavBarContainer";
 import Profile from "./Profile/Profile";
 import Dialogs from "./Dialogs/Dialogs";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
@@ -10,30 +10,31 @@ import Settings from "./Settings/Settings";
 import Friends from "./Friends/Friends";
 
 
+
 function App(props) {
-	
+
 	let appWrapperClass = "";
 	
-	if (props.store.getState().navBar.mobileStatus) {
+	if (props.mobileStatus) {
 		appWrapperClass += " mobile";
 	}
 	
-	if (props.store.getState().navBar.openedStatus) {
+	if (props.navBarOpenedStatus) {
 		appWrapperClass += " navBarOpened";
 	}
 	
   return (
     <BrowserRouter>
       <div id="app-wrapper" className={appWrapperClass}>
-        <Header store={props.store} />
-        <NavBar store={props.store} />
+        <HeaderContainer />
+        <NavBarContainer />
         <Routes> 
-          <Route path="/profile" element={<Profile store={props.store} />} />
-          <Route path="/dialogs/*" element={<Dialogs store={props.store} />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/dialogs/*" element={<Dialogs />} />
           <Route path="/music" element={<Music />} />
           <Route path="/news" element={<News />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/friends" element={<Friends store={props.store} />} />
+          <Route path="/friends" element={<Friends />} />
         </Routes>
       </div>
     </BrowserRouter>

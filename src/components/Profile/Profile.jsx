@@ -10,7 +10,7 @@ function Profile(props) {
     <main className={classes.profile}>
       <MainUserInfo />
       <UserDescription />
-      <PostsBlockContainer store={props.store} />
+      <PostsBlockContainer />
     </main>
   )
 }

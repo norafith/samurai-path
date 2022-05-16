@@ -1,14 +1,13 @@
 import React from "react";
-import classes from "./Friends.module.css";
-import FriendSearchBar from "./FriendSearchBar/FriendSearchBar";
+import SearchBarContainer from "./SearchBar/SearchBarContainer";
 import FriendsListContainer from "./FriendsList/FriendsListContainer";
 
 function Friends(props) {
   return (
     <main>
       <section>
-        <FriendSearchBar />
-        <FriendsListContainer store={props.store} />
+        <SearchBarContainer />
+        <FriendsListContainer />
       </section>
     </main>
   )
