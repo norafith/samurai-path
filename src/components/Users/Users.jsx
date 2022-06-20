@@ -1,16 +1,16 @@
 import React from "react";
 import SearchBarContainer from "./SearchBar/SearchBarContainer";
-import FriendsListContainer from "./FriendsList/FriendsListContainer";
+import UsersListContainer from "./UsersList/UsersListContainer";
 
-function Friends(props) {
+function Users(props) {
   return (
     <main>
       <section>
         <SearchBarContainer />
-        <FriendsListContainer />
+        <UsersListContainer />
       </section>
     </main>
   )
 }
 
-export default Friends;
+export default Users;

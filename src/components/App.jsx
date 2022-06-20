@@ -7,7 +7,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Music from "./Music/Music";
 import News from "./News/News";
 import Settings from "./Settings/Settings";
-import Friends from "./Friends/Friends";
+import Users from "./Users/Users";
 
 
 
@@ -34,7 +34,7 @@ function App(props) {
           <Route path="/music" element={<Music />} />
           <Route path="/news" element={<News />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/friends" element={<Friends />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,14 +1,14 @@
 import React from "react";
-import classes from "./Friend.module.css";
+import classes from "./User.module.css";
 import logo from "./user.png"
 
-function Friend(props) {
+function User(props) {
   let onlineStatusClass = classes.onlineStatus;
   if (props.onlineStatus) {
     onlineStatusClass += " " + classes.active;
   }
   return (
-    <span className={classes.friend}>
+    <span className={classes.user}>
       <img className={classes.logo} src={logo} alt="user logo" />
       <span className={classes.content}>
         <div className={classes.name}>{props.name}</div>
@@ -19,4 +19,4 @@ function Friend(props) {
   )
 }
 
-export default Friend;
+export default User;

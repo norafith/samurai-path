@@ -3,7 +3,7 @@ const TOGGLE_NAVBAR_MOBILE_STATUS = "TOGGLE-NAVBAR-MOBILE-STATUS";
 const REMOVE_NAVBAR_MOBILE_STATUS = "REMOVE-NAVBAR-MOBILE-STATUS";
 
 const initialState = {
-  sectionList: ["Profile", "Dialogs", "Friends", "News", "Music", "Settings"],
+  sectionList: ["Profile", "Dialogs", "Users", "News", "Music", "Settings"],
 
   openedStatus: true,
   mobileStatus: false,

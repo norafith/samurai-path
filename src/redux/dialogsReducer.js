@@ -1,13 +1,17 @@
-import { friendsList } from "./friendsReducer";
+// import { usersList } from "./usersReducer";
 
 const ADD_MESSAGE = "ADD-MESSAGE";
 const CHANGE_DRAFT_MESSAGE = "CHANGE-DRAFT-MESSAGE";
 const CHANGE_SEARCH_TEXT = "CHANGE-SEARCH-TEXT";
 
 const initialState = {
-  chatOptions: [...friendsList],
+  chatOptions: [
+    { userID: 3, name: "Ira", onlineStatus: false, friendStatus: true },
+  ],
 
-  shownChatOptions: [...friendsList],
+  shownChatOptions: [
+    { userID: 3, name: "Ira", onlineStatus: false, friendStatus: true },
+  ],
 
   // curr user id = 2
   messages: {

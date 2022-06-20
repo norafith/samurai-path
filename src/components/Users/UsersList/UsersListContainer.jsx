@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import FriendsList from "./FriendsList";
+import { loadUsersAC } from "../../../redux/usersReducer";
+import UsersList from "./UsersList";
 
 // function FriendsListContainer(props) {
 //   const state = props.store.getState();
@@ -9,15 +10,20 @@ import FriendsList from "./FriendsList";
 
 function mapStateToProps(state) {
   return {
-    friends: state.friends,
+    users: state.users,
     mobileStatus: state.navBar.mobileStatus
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return {}
+  debugger;
+  return {
+    loadUsers(usersList) {
+      dispatch(loadUsersAC(usersList));
+    }
+  }
 }
 
-const FriendsListContainer = connect(mapStateToProps, mapDispatchToProps)(FriendsList);
+const UsersListContainer = connect(mapStateToProps, mapDispatchToProps)(UsersList);
 
-export default FriendsListContainer;
+export default UsersListContainer;
