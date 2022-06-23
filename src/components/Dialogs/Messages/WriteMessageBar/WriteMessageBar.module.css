@@ -4,8 +4,7 @@
   bottom: 0;
   width: 100%;
   height: fit-content;
-  border-bottom-right-radius: 25px;
-  border-top: 1px solid #F4F3EE;
+  border-top: 1px solid #5f5f5f;
 }
 
 .writeMessageText {

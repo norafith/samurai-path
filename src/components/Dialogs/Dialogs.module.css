@@ -1,6 +1,8 @@
 .mainSection {
   padding: 0 !important;
 	box-sizing: border-box;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
   display: grid;
   grid-template-columns: 3fr 10fr;
   height: 100%;  

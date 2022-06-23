@@ -10,7 +10,7 @@
 }
 
 .chatOption:not(.active):hover {
-  background-color: #5A514B;
+  background-color: #3b3937;
 }
 
 .chatOption.active {

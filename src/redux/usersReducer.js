@@ -1,5 +1,5 @@
 const LOAD_USERS = "LOAD_FRIENDS";
-const CHANGE_FRIEND_STATUS = "CHANGE_FRIEND_STATUS";
+const CHANGE_FOLLOWED_STATUS = "CHANGE_FRIEND_STATUS";
 
 let initialState = [
   // { userID: 1, name: "Sasha", onlineStatus: true, friendStatus: false },
@@ -17,11 +17,11 @@ function usersReducer(state = initialState, action) {
       return stateCopy;
     }
 
-    case CHANGE_FRIEND_STATUS: {
+    case CHANGE_FOLLOWED_STATUS: {
       let stateCopy = [...state];
       stateCopy = stateCopy.map((user) => {
         if (user.id === action.id) {
-          user.friendStatus = !user.friendStatus;
+          user.followed = !user.followed;
         }
         return user;
       });
@@ -41,9 +41,9 @@ function loadUsersAC(usersList) {
   };
 }
 
-function changeFriendStatusAC(id) {
+function changeFollowedStatusAC(id) {
   return {
-    type: CHANGE_FRIEND_STATUS,
+    type: CHANGE_FOLLOWED_STATUS,
     id: id,
   };
 }
@@ -51,6 +51,6 @@ function changeFriendStatusAC(id) {
 export {
   usersReducer,
   loadUsersAC,
-  changeFriendStatusAC,
+  changeFollowedStatusAC,
   initialState as usersList,
 };

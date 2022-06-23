@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { loadUsersAC } from "../../../redux/usersReducer";
+import {changeFollowedStatusAC, loadUsersAC } from "../../../redux/usersReducer";
 import UsersList from "./UsersList";
 
 // function FriendsListContainer(props) {
@@ -16,10 +16,13 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  debugger;
   return {
     loadUsers(usersList) {
       dispatch(loadUsersAC(usersList));
+    },
+
+    changeFollowedStatus(id) {
+      dispatch(changeFollowedStatusAC(id));
     }
   }
 }

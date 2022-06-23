@@ -5,13 +5,9 @@ const CHANGE_DRAFT_MESSAGE = "CHANGE-DRAFT-MESSAGE";
 const CHANGE_SEARCH_TEXT = "CHANGE-SEARCH-TEXT";
 
 const initialState = {
-  chatOptions: [
-    { userID: 3, name: "Ira", onlineStatus: false, friendStatus: true },
-  ],
+  chatOptions: [{ userID: 3, name: "Ira" }],
 
-  shownChatOptions: [
-    { userID: 3, name: "Ira", onlineStatus: false, friendStatus: true },
-  ],
+  shownChatOptions: [{ userID: 3, name: "Ira" }], // data should be taken from server
 
   // curr user id = 2
   messages: {

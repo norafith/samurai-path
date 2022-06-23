@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 body {
-  background-color: #8A817C;
+  background-color: #232221;
   color: #F4F3EE;
   font-size: 18px;
   font-family: "Rubik", sans-serif;
@@ -36,9 +36,9 @@ body {
 }
 
 #app-wrapper > main > section {
-  background-color: #463F3A;
+  background-color: #383532;
   padding: 25px;
-  border: 1px solid #F4F3EE;
+  border: 1px solid #5f5f5f;
   border-radius: 25px;
   margin-bottom: 25px;
 }

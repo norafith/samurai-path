@@ -1,14 +1,15 @@
 .user {
   position: relative;
-  display: inline-flex;
-  flex-direction: column;
+  display: flex;
   align-items: center;
-  background-color: #5e5650;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #47433f;
   border-radius: 25px;
-  height: 300px;
   padding: 25px;
-  margin: 15px;
-  max-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 5px;
   margin-bottom: 25px;
 }
 
@@ -25,20 +26,22 @@
 }
 
 .content {
-  margin-top: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.content > * {
+  margin-right: 5px;
+}
+
+.text > * {
+  margin: 5px;
 }
 
 .writeMessage {
   cursor: pointer;
 }
 
-.onlineStatus {
-  display: none;
+.id {
   color: #4aff59;
-  position: absolute;
-  bottom: 25px;
-}
-
-.onlineStatus.active {
-  display: block;
 }
