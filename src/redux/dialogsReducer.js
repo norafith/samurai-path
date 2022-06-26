@@ -3,11 +3,12 @@
 const ADD_MESSAGE = "ADD-MESSAGE";
 const CHANGE_DRAFT_MESSAGE = "CHANGE-DRAFT-MESSAGE";
 const CHANGE_SEARCH_TEXT = "CHANGE-SEARCH-TEXT";
+const SET_CHAT_OPTIONS = "SET_CHAT_OPTIONS";
 
 const initialState = {
-  chatOptions: [{ userID: 3, name: "Ira" }],
+  chatOptions: [],
 
-  shownChatOptions: [{ userID: 3, name: "Ira" }], // data should be taken from server
+  shownChatOptions: [], // data should be taken from server
 
   // curr user id = 2
   messages: {
@@ -70,6 +71,12 @@ function dialogsReducer(state = initialState, action) {
       return stateCopy;
     }
 
+    case SET_CHAT_OPTIONS: {
+      let stateCopy = { ...state };
+      stateCopy.chatOptions = [...action.chatOptions];
+      stateCopy.shownChatOptions = [...action.chatOptions];
+      return stateCopy;
+    }
     default: {
       return state;
     }
@@ -96,9 +103,17 @@ function changeSearchTextActionCreator(searchText) {
   };
 }
 
+function setChatOptionsAC(chatOptions) {
+  return {
+    type: SET_CHAT_OPTIONS,
+    chatOptions: chatOptions,
+  };
+}
+
 export {
   dialogsReducer,
   addMessageActionCreator,
   changeDraftMessageActionCreator,
+  setChatOptionsAC,
   changeSearchTextActionCreator,
 };

@@ -3,20 +3,26 @@ import ChatOption from "./ChatOption/ChatOption";
 import classes from "./ChatList.module.css";
 import ChatSearchBar from "./ChatSearchBar/ChatSearchBar";
 
-function ChatList(props) {
-  const chatOptionsElements = props.shownChatOptions.map(
-    (option) => <ChatOption userID={option.userID} name={option.name} />
-  );
+class ChatList extends React.Component {
+  componentDidMount() {
+    this.props.setChatOptions(this.props.shownChatOptions);
+  }
 
-  return (
-    <ul className={classes.chatList}>
-      <ChatSearchBar 
-        changeSearchText={props.changeSearchText} 
-        searchText={props.searchText} 
-      />
-      { chatOptionsElements }
-    </ul>
-  )
+  render() {
+    const chatOptionsElements = this.props.shownChatOptions.map(
+      (option) => <ChatOption userID={option.id} name={option.name} />
+    );
+
+    return (
+      <ul className={classes.chatList}>
+        <ChatSearchBar
+          changeSearchText={this.props.changeSearchText}
+          searchText={this.props.searchText}
+        />
+        {chatOptionsElements}
+      </ul>
+    )
+  }
 }
 
 export default ChatList;

@@ -20,7 +20,7 @@
 }
 
 .name {
-  font-size: 1.25em;
+  font-size: 1.5em;
   font-weight: bold;
   color: #BCB8B1;
 }
@@ -34,13 +34,10 @@
   margin-right: 5px;
 }
 
-.text > * {
-  margin: 5px;
-}
-
 .writeMessage {
   cursor: pointer;
 }
+
 
 .id {
   color: #4aff59;

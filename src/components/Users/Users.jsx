@@ -1,13 +1,13 @@
 import React from "react";
 import SearchBarContainer from "./SearchBar/SearchBarContainer";
-import UsersListContainer from "./UsersList/UsersListContainer";
+import UsersListStoreContainer from "./UsersList/UsersListStoreContainer";
 
-function Users(props) {
+function Users(props) { 
   return (
     <main>
       <section>
         <SearchBarContainer />
-        <UsersListContainer />
+        <UsersListStoreContainer />
       </section>
     </main>
   )

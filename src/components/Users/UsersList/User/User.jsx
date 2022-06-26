@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./User.module.css";
-import logo from "./user.png"
+import userImg from "../../../../assets/user.png"
 
 function User(props) {
   // let onlineStatusClass = classes.onlineStatus;
@@ -8,21 +8,22 @@ function User(props) {
   //   onlineStatusClass += " " + classes.active;
   // }
   return (
-    <span className={classes.user}>
+    <div className={classes.user}>
       <div className={classes.content}>
-        <img className={classes.logo} src={logo} alt="user logo" />
+        <img className={classes.logo} src={props.photo ? props.photo : userImg} alt="user logo" />
         <div className={classes.text}>
           <div className={classes.name}>{props.name}</div>
+          <div className={classes.status}>{ props.status ? props.status : "No status." }</div>
           <div className={classes.writeMessage}>Write message</div>
         </div>
       </div>
       <div className={classes.additional}>
         <button
-          onClick={props.changeFollowedStatus.bind(this, props.id)}
+          onClick={() => props.changeFollowedStatus(props.id)}
         >{ props.followed ? "Unfollow" : "Follow" }</button>
         <div className={classes.id}>{props.id}</div>
       </div>
-    </span>
+    </div>
   )
 }
 
