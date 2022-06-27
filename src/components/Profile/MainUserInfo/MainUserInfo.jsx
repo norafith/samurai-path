@@ -1,19 +1,19 @@
 import classes from "./MainUserInfo.module.css"
+import user from "../../../assets/user.png";
 
-function MainUserInfo() {
+function MainUserInfo(props) {
   return (
     <section className={classes.mainUserInfo}>
       <img
         className={classes.userLogo}
-        src="https://news.store.rambler.ru/img/cf6e2a13af3568f2318193573cb0b37d?img-format=auto&img-1-resize=height:355,fit:max&img-2-filter=sharpen"
+        src={props.photo || user}
         alt="user logo"
       />
       <div className={classes.userProperties}>
-        <span className={classes.username}>
-          <span className={classes.firstName}>Billy</span>
-          <span className={classes.familyName}>Herrington</span>
-        </span>
-        <span className={classes.age}>30</span>
+        <div className={classes.username}>
+          {props.fullName}
+        </div>
+        <div className={classes.status}>{ props.status || "No status."}</div>
       </div>
     </section>
   );

@@ -4,29 +4,13 @@
 }
 
 .username {
-  display: flex;
+  font-weight: bold;
+  font-size: 2em;
   color: #BCB8B1;
 }
 
 .userProperties {
   margin-left: 10px;
-}
-
-.firstName {
-  margin-right: 7px;
-}
-
-.firstName,
-.familyName {
-  font-weight: bold;
-}
-
-.firstName::after {
-  content: " ";
-}
-
-.familyName::after {
-  content: ", ";
 }
 
 .userLogo {
@@ -37,10 +21,5 @@
 
 .userProperties {
   height: 100%;
-  font-size: 1.25em;
   height: fit-content;
-}
-
-.age::after {
-  content: " y. o.";
 }

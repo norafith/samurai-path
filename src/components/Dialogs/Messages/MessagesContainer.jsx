@@ -1,5 +1,5 @@
 import Messages from "./Messages";
-import { changeDraftMessageActionCreator, addMessageActionCreator } from "../../../redux/dialogsReducer";
+import { changeDraftMessageActionCreator as changeDraftMessage, addMessageActionCreator as addMessage } from "../../../redux/dialogsReducer";
 import { connect } from "react-redux";
 
 // function MessagesContainer(props) {
@@ -28,17 +28,7 @@ function mapStateToProps(state) {
 	}	
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		changeDraftMessage(text) {
-			dispatch(changeDraftMessageActionCreator(text));
-		},
-
-		newMessage() {
-			dispatch(addMessageActionCreator());
-		}
-	}
-}
+const mapDispatchToProps = { changeDraftMessage, addMessage }
 
 const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
 

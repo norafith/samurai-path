@@ -1,7 +1,7 @@
 import "./App.css";
 import HeaderContainer from "./Header/HeaderContainer";
 import NavBarContainer from "./NavBar/NavBarContainer";
-import Profile from "./Profile/Profile";
+import ProfileContainer from "./Profile/ProfileContainer";
 import Dialogs from "./Dialogs/Dialogs";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Music from "./Music/Music";
@@ -29,7 +29,7 @@ function App(props) {
         <HeaderContainer />
         <NavBarContainer />
         <Routes> 
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<ProfileContainer />} />
           <Route path="/dialogs/*" element={<Dialogs />} />
           <Route path="/music" element={<Music />} />
           <Route path="/news" element={<News />} />

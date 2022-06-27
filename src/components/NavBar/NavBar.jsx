@@ -2,7 +2,7 @@ import classes from "./NavBar.module.css";
 import NavOption from "./NavOption/NavOption";
 
 function NavBar(props) {
-  const navElements = props.sectionList.map(option => <NavOption name={option} /> )
+  const navElements = props.sectionList.map(option => option === "Profile" ? <NavOption name={option} currUserId={props.currUserId} /> : <NavOption name={option} /> )
 
   let navBarClass = classes.navbar;
   if (props.mobileStatus) {

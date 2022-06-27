@@ -1,7 +1,11 @@
 const ADD_POST = "ADD-POST";
 const CHANGE_DRAFT_POST = "CHANGE-DRAFT-POST";
+const SET_FETCHING_STATE = "SET_FETCHING_STATE";
+const SET_PROFILE_DATA = "SET_PROFILE_DATA";
 
 let initialState = {
+  profileData: null,
+
   posts: {
     postsList: [
       {
@@ -38,6 +42,9 @@ let initialState = {
 
     draftPost: "",
   },
+
+  currUserId: 24584, // should be taken when user signed in
+  fetchingState: null,
 };
 
 function profileReducer(state = initialState, action) {
@@ -75,6 +82,20 @@ function profileReducer(state = initialState, action) {
       return stateCopy;
     }
 
+    case SET_FETCHING_STATE: {
+      const stateCopy = { ...state };
+      stateCopy.fetchingState = action.fetchingState;
+
+      return stateCopy;
+    }
+
+    case SET_PROFILE_DATA: {
+      debugger;
+      const stateCopy = { ...state };
+      stateCopy.profileData = action.profileData;
+      return stateCopy;
+    }
+
     default: {
       return state;
     }
@@ -87,11 +108,31 @@ function addPostActionCreator() {
   };
 }
 
-function changeDraftPostActionCreator(postText) {
+function changeDraftPostActionCreator(text) {
   return {
     type: CHANGE_DRAFT_POST,
-    text: postText,
+    text,
   };
 }
 
-export { profileReducer, addPostActionCreator, changeDraftPostActionCreator };
+function setFetchingStateAC(fetchingState) {
+  return {
+    type: SET_FETCHING_STATE,
+    fetchingState,
+  };
+}
+
+function setProfileDataAC(profileData) {
+  return {
+    type: SET_PROFILE_DATA,
+    profileData,
+  };
+}
+
+export {
+  profileReducer,
+  addPostActionCreator,
+  changeDraftPostActionCreator,
+  setFetchingStateAC,
+  setProfileDataAC,
+};

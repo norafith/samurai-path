@@ -12,7 +12,7 @@ function Messages(props) {
       {messageElements}
       </div>
       <WriteMessageBar 
-      	newMessage={props.newMessage} 
+      	addMessage={props.addMessage} 
       	changeDraftMessage={props.changeDraftMessage}
       	draftMessage={props.draftMessage} 
       />

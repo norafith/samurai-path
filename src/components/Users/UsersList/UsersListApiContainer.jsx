@@ -1,8 +1,10 @@
 import React from "react";
+import Preloader from "../../common/Preloader/Preloader";
 import UsersList from "./UsersList";
 
 class UsersListApiContainer extends React.Component {
   getUsers(page) {
+    this.props.setFetchingState(true);
     return fetch(`https://social-network.samuraijs.com/api/1.0/users?count=5&page=${page}`, {
       type: "GET",
       headers: {
@@ -11,6 +13,7 @@ class UsersListApiContainer extends React.Component {
     }).then((result) => result.json()).then((result) => {
       this.props.loadUsers(result.items); 
       this.props.setTotalCount(result.totalCount);
+      this.props.setFetchingState(false);
     })
   }
 
@@ -19,16 +22,22 @@ class UsersListApiContainer extends React.Component {
   }
 
   render() {
-    return <UsersList
-      users={this.props.users}
-      currentPageControlOffset={this.props.currentPageControlOffset}
-      mobileStatus={this.props.mobileStatus}
-      changeCurrentPage={this.props.changeCurrentPage}
-      changeCurrentPageControlOffset={this.props.changeCurrentPageControlOffset}
-      getUsers={this.getUsers.bind(this)}
-      changeFollowedStatus={this.props.changeFollowedStatus}
-      currentPage={this.props.currentPage}
-    />
+    return <>
+      {this.props.isFetching ?
+        <Preloader /> :
+        <UsersList
+          users={this.props.users}
+          currentPageControlOffset={this.props.currentPageControlOffset}
+          mobileStatus={this.props.mobileStatus}
+          changeCurrentPage={this.props.changeCurrentPage}
+          changeCurrentPageControlOffset={this.props.changeCurrentPageControlOffset}
+          getUsers={this.getUsers.bind(this)}
+          changeFollowedStatus={this.props.changeFollowedStatus}
+          currentPage={this.props.currentPage}
+        />
+      }
+      
+    </>
   }
 }
 

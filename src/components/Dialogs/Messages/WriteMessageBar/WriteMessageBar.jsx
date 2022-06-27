@@ -7,7 +7,7 @@ function WriteMessage(props) {
 	
   function newMessage(event) {
     if (event.type !== "click" && event.key !== "Enter") return;
-    props.newMessage();
+    props.addMessage();
   }
 	
   function inputHandler() {

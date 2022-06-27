@@ -1,22 +1,17 @@
 import { connect } from "react-redux";
-import { changeNavBarOpenedStatusActionCreator } from "../../redux/navBarReducer";
+import { changeNavBarOpenedStatusActionCreator as changeNavBarOpenedStatus } from "../../redux/navBarReducer";
 import NavBar from "./NavBar";
 
 function mapStateToProps(state) {
   return {
     sectionList: state.navBar.sectionList,
     mobileStatus: state.navBar.mobileStatus,
-    navBarOpenedStatus: state.navBar.openedStatus
+    navBarOpenedStatus: state.navBar.openedStatus,
+    currUserId: state.profile.currUserId
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    changeNavBarOpenedStatus() {
-      dispatch(changeNavBarOpenedStatusActionCreator())
-    }
-  }
-}
+const mapDispatchToProps = {changeNavBarOpenedStatus}
 
 const NavBarContainer = connect(mapStateToProps, mapDispatchToProps)(NavBar);
 

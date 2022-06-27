@@ -3,12 +3,14 @@ const CHANGE_FOLLOWED_STATUS = "CHANGE_FOLLOWED_STATUS";
 const CHANGE_CURRENT_PAGE = "CHANGE_CURRENT_PAGE";
 const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
 const CHANGE_CURRENT_PAGE_CONTROL_OFFSET = "CHANGE_CURRENT_PAGE_CONTROL_OFFSET";
+const SET_FETCHING_STATE = "SET_FETCHING_STATE";
 
 let initialState = {
   currentPage: 1,
   currentPageControlOffset: 0,
   usersList: [],
   followedList: [],
+  isFetching: false,
   // { userID: 1, name: "Sasha", onlineStatus: true, friendStatus: false },
   // { userID: 2, name: "Julia", onlineStatus: true, friendStatus: false },
   // { userID: 3, name: "Ira", onlineStatus: false, friendStatus: true },
@@ -62,6 +64,12 @@ function usersReducer(state = initialState, action) {
       return stateCopy;
     }
 
+    case SET_FETCHING_STATE: {
+      let stateCopy = { ...state };
+      stateCopy.isFetching = action.isFetching;
+      return stateCopy;
+    }
+
     default: {
       return state;
     }
@@ -92,14 +100,21 @@ function changeCurrentPageAC(page) {
 function setTotalCountAC(totalCount) {
   return {
     type: SET_TOTAL_COUNT,
-    totalCount: totalCount,
+    totalCount,
   };
 }
 
 function changeCurrentPageControlOffsetAC(addition) {
   return {
     type: CHANGE_CURRENT_PAGE_CONTROL_OFFSET,
-    addition: addition,
+    addition,
+  };
+}
+
+function setFetchingStateAC(isFetching) {
+  return {
+    type: SET_FETCHING_STATE,
+    isFetching,
   };
 }
 
@@ -110,5 +125,5 @@ export {
   changeCurrentPageAC,
   setTotalCountAC,
   changeCurrentPageControlOffsetAC,
-  initialState as usersList,
+  setFetchingStateAC,
 };
