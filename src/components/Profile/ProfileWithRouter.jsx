@@ -5,7 +5,6 @@ function ProfileWithRouter(Component) {
     let params = useParams();
     let location = useLocation();
     let navigate = useNavigate();
-    debugger;
     return <Component {...props} params={params} location={location} navigate={navigate} />
   }
 

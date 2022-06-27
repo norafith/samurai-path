@@ -15,16 +15,10 @@ function Profile(props) {
         photo={props.profileData.photos.large}
         fullName={props.profileData.fullName}
         userId={props.profileData.userId}
+        status={props.profileData.status}
       />
       <UserDescription
         aboutMe={props.profileData.aboutMe}
-      />
-      <PostsBlock
-        postsList={props.postsList}
-        draftPostValue={props.draftPostValue}
-        changeDraftPost={props.changeDraftPost}
-        createBtnHandler={props.createBtnHandler}
-        addPost={props.addPost}
       />
       <LookingForAJob
         lookingForAJob={props.profileData.lookingForAJob}
@@ -32,6 +26,13 @@ function Profile(props) {
       />
       <Contacts
         contacts={props.profileData.contacts}
+      />
+      <PostsBlock
+        postsList={props.postsList}
+        draftPostValue={props.draftPostValue}
+        changeDraftPost={props.changeDraftPost}
+        createBtnHandler={props.createBtnHandler}
+        addPost={props.addPost}
       />
     </main>
   )

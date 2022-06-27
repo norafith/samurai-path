@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./User.module.css";
 import userImg from "../../../../assets/user.png"
+import { NavLink } from "react-router-dom";
 
 function User(props) {
   // let onlineStatusClass = classes.onlineStatus;
@@ -12,7 +13,7 @@ function User(props) {
       <div className={classes.content}>
         <img className={classes.logo} src={props.photo ? props.photo : userImg} alt="user logo" />
         <div className={classes.text}>
-          <div className={classes.name}>{props.name}</div>
+          <NavLink to={"/profile/" + props.id} className={classes.name}>{props.name}</NavLink>
           <div className={classes.status}>{ props.status ? props.status : "No status." }</div>
           <div className={classes.writeMessage}>Write message</div>
         </div>

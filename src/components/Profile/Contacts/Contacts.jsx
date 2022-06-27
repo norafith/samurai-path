@@ -9,6 +9,11 @@ import website from "../../../assets/socialMedia/website.png";
 import youtube from "../../../assets/socialMedia/youtube.png";
 
 function Contacts(props) {
+  const contactsArr = Object.values(props.contacts);
+  if (contactsArr.filter((item) => item === null).length === contactsArr.length) {
+    return;
+  }
+
   const logosObj = { facebook, github, instagram, twitter, vk, website, youtube };
   const contactsElems = [];
   for (let socialNetworkName in props.contacts) {

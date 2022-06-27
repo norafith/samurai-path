@@ -17,7 +17,8 @@ class ProfileApiContainer extends React.Component {
       headers: {
         "API-KEY": "8ef37fda-1577-4784-a323-4a2da600bd86"
       }
-    }).then((result) => result.json()).then((result) => {
+    }).then((result) => result.json())
+    .then((result) => {
       this.props.setProfileData(result);
       this.props.setFetchingState(false);
     })
@@ -25,6 +26,10 @@ class ProfileApiContainer extends React.Component {
 
   componentDidMount() {
     this.getProfile();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.params.id !== prevProps.params.id) this.getProfile()
   }
 
   render() {
