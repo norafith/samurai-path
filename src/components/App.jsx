@@ -8,12 +8,14 @@ import Music from "./Music/Music";
 import News from "./News/News";
 import Settings from "./Settings/Settings";
 import Users from "./Users/Users";
+import Preloader from "./common/Preloader/Preloader";
 
 
 
 function App(props) {
-
-	let appWrapperClass = "";
+  if (!props.currUserData) return <Preloader />
+	
+  let appWrapperClass = "";
 	
 	if (props.mobileStatus) {
 		appWrapperClass += " mobile";

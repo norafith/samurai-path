@@ -7,6 +7,8 @@ class UsersListApiContainer extends React.Component {
     this.props.setFetchingState(true);
     return fetch(`https://social-network.samuraijs.com/api/1.0/users?count=5&page=${page}`, {
       type: "GET",
+      mode: "cors",
+      credentials: "include",
       headers: {
         "API-KEY": "8ef37fda-1577-4784-a323-4a2da600bd86"
       }

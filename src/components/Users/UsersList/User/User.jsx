@@ -20,7 +20,18 @@ function User(props) {
       </div>
       <div className={classes.additional}>
         <button
-          onClick={() => props.changeFollowedStatus(props.id)}
+          onClick={() => {
+            const requestType = props.followed ? "DELETE" : "POST";
+            fetch(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {
+              method: requestType,
+              mode: "cors",
+              credentials: "include",
+              headers: {
+                "API-KEY": "8ef37fda-1577-4784-a323-4a2da600bd86"
+              }
+            }).then((result) => result.json())
+              .then((result) => props.changeFollowedStatus(props.id))
+          }}
         >{ props.followed ? "Unfollow" : "Follow" }</button>
         <div className={classes.id}>{props.id}</div>
       </div>
