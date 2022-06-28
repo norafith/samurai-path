@@ -8,20 +8,15 @@ import {
   setFetchingStateAC as setFetchingState,
   setProfileDataAC as setProfileData,
 } from "../../redux/profileReducer";
+import { profileAPI } from "../../api/api";
 
 class ProfileApiContainer extends React.Component {
   getProfile() {
-      this.props.setFetchingState(true);
-      return fetch(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.params.id}`, {
-        type: "GET",
-        headers: {
-          "API-KEY": "8ef37fda-1577-4784-a323-4a2da600bd86"
-        }
-      }).then((result) => result.json())
-      .then((result) => {
-        this.props.setProfileData(result);
-        this.props.setFetchingState(false);
-      })
+    this.props.setFetchingState(true);
+    return profileAPI.getProfile(this.props.params.id).then((result) => {
+      this.props.setProfileData(result);
+      this.props.setFetchingState(false);
+    });
   }
 
   componentDidMount() {
@@ -29,25 +24,32 @@ class ProfileApiContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.params.id !== prevProps.params.id) this.getProfile()
+    if (this.props.params.id !== prevProps.params.id) this.getProfile();
   }
 
   render() {
-    return <Profile {...this.props} />
+    return <Profile {...this.props} />;
   }
 }
 
-
 function mapStateToProps(state) {
-	return {
-		postsList: state.profile.posts.postsList,
+  return {
+    postsList: state.profile.posts.postsList,
     draftPostValue: state.profile.posts.draftPost,
     profileData: state.profile.profileData,
     fetchingState: state.profile.fetchingState,
-	}
+  };
 }
-const mapDispatchToProps = { changeDraftPost, addPost, setFetchingState, setProfileData };
-const ProfileStoreContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileApiContainer);
+const mapDispatchToProps = {
+  changeDraftPost,
+  addPost,
+  setFetchingState,
+  setProfileData,
+};
+const ProfileStoreContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileApiContainer);
 
 const ProfileUrlContainer = withRouter(ProfileStoreContainer);
 

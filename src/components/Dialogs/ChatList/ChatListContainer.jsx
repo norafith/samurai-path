@@ -6,27 +6,15 @@ import {
   setChatOptionsAC as setChatOptions,
   setFetchingStateAC as setFetchingState,
 } from "../../../redux/dialogsReducer";
-import Preloader from "./../../common/Preloader/Preloader";
+import { usersAPI } from "../../../api/api";
 
 class ChatListApiContainer extends React.Component {
   componentDidMount() {
     this.props.setFetchingState(true);
-    return fetch(
-      `https://social-network.samuraijs.com/api/1.0/users?friend=true`,
-      {
-        method: "GET",
-        mode: "cors",
-        credentials: "include",
-        headers: {
-          "API-KEY": "8ef37fda-1577-4784-a323-4a2da600bd86",
-        },
-      }
-    )
-      .then((result) => result.json())
-      .then((result) => {
-        this.props.setChatOptions(result.items);
-        this.props.setFetchingState(false);
-      });
+    return usersAPI.getFriends().then((result) => {
+      this.props.setChatOptions(result.items);
+      this.props.setFetchingState(false);
+    });
   }
 
   render() {
