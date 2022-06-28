@@ -1,11 +1,9 @@
 const ADD_POST = "ADD-POST";
 const CHANGE_DRAFT_POST = "CHANGE-DRAFT-POST";
-const SET_FETCHING_STATE = "SET_FETCHING_STATE";
+const SET_FETCHING_STATE = "SET_FETCHING_STATE_PROFILE";
 const SET_PROFILE_DATA = "SET_PROFILE_DATA";
 
 let initialState = {
-  profileData: null,
-
   posts: {
     postsList: [
       {

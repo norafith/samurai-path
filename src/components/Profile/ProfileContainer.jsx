@@ -11,17 +11,17 @@ import {
 
 class ProfileApiContainer extends React.Component {
   getProfile() {
-    this.props.setFetchingState(true);
-    return fetch(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.params.id}`, {
-      type: "GET",
-      headers: {
-        "API-KEY": "8ef37fda-1577-4784-a323-4a2da600bd86"
-      }
-    }).then((result) => result.json())
-    .then((result) => {
-      this.props.setProfileData(result);
-      this.props.setFetchingState(false);
-    })
+      this.props.setFetchingState(true);
+      return fetch(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.params.id}`, {
+        type: "GET",
+        headers: {
+          "API-KEY": "8ef37fda-1577-4784-a323-4a2da600bd86"
+        }
+      }).then((result) => result.json())
+      .then((result) => {
+        this.props.setProfileData(result);
+        this.props.setFetchingState(false);
+      })
   }
 
   componentDidMount() {
