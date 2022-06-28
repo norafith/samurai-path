@@ -9,7 +9,6 @@ let initialState = {
   currentPage: 1,
   currentPageControlOffset: 0,
   usersList: [],
-  followedList: [],
   isFetching: false,
   // { userID: 1, name: "Sasha", onlineStatus: true, friendStatus: false },
   // { userID: 2, name: "Julia", onlineStatus: true, friendStatus: false },
@@ -32,7 +31,6 @@ function usersReducer(state = initialState, action) {
       stateCopy.usersList = stateCopy.usersList.map((user) => {
         if (user.id === action.id) {
           user.followed = !user.followed;
-          stateCopy.followedList.push(user);
         }
         return user;
       });

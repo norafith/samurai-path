@@ -4,6 +4,7 @@ const ADD_MESSAGE = "ADD-MESSAGE";
 const CHANGE_DRAFT_MESSAGE = "CHANGE-DRAFT-MESSAGE";
 const CHANGE_SEARCH_TEXT = "CHANGE-SEARCH-TEXT";
 const SET_CHAT_OPTIONS = "SET_CHAT_OPTIONS";
+const SET_FETCHING_STATE = "SET_FETCHING_STATE_DIALOGS";
 
 const initialState = {
   chatOptions: [],
@@ -25,6 +26,7 @@ const initialState = {
   },
 
   draftSearch: "",
+  fetchingState: null,
 };
 
 function dialogsReducer(state = initialState, action) {
@@ -77,6 +79,13 @@ function dialogsReducer(state = initialState, action) {
       stateCopy.shownChatOptions = [...action.chatOptions];
       return stateCopy;
     }
+
+    case SET_FETCHING_STATE: {
+      let stateCopy = { ...state };
+      stateCopy.fetchingState = action.fetchingState;
+      return stateCopy;
+    }
+
     default: {
       return state;
     }
@@ -110,10 +119,18 @@ function setChatOptionsAC(chatOptions) {
   };
 }
 
+function setFetchingStateAC(fetchingState) {
+  return {
+    type: SET_FETCHING_STATE,
+    fetchingState,
+  };
+}
+
 export {
   dialogsReducer,
   addMessageActionCreator,
   changeDraftMessageActionCreator,
   setChatOptionsAC,
   changeSearchTextActionCreator,
+  setFetchingStateAC,
 };
