@@ -12,8 +12,6 @@ function UsersList(props) {
         status={user.status}
         photo={user.photos.large}
         changeFollowedStatus={props.changeFollowedStatus}
-        disableUserFollowingState={props.disableUserFollowingState}
-        toggleUserFollowingState={props.toggleUserFollowingState}
         followingUsers={props.followingUsers}
       />
     );

@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const LOAD_USERS = "LOAD_USERS";
 const CHANGE_FOLLOWED_STATUS = "CHANGE_FOLLOWED_STATUS";
 const CHANGE_CURRENT_PAGE = "CHANGE_CURRENT_PAGE";
@@ -142,6 +144,30 @@ function disableUserFollowingStateAC(userId) {
   };
 }
 
+function getUsersThunkCreator(page) {
+  return function getUsersThunk(dispatch, getState) {
+    dispatch(setFetchingStateAC(true));
+    usersAPI.getUsers(page).then((result) => {
+      dispatch(loadUsersAC(result.items));
+      dispatch(setTotalCountAC(result.totalCount));
+      dispatch(setFetchingStateAC(false));
+    });
+  };
+}
+
+function changeFollowedStatusThunkCreator(followed, id) {
+  return function changeFollowedStatusThunk(dispatch, getState) {
+    const currActionPromise = followed
+      ? usersAPI.unfollowUser(id)
+      : usersAPI.followUser(id);
+    dispatch(toggleUserFollowingStateAC(id));
+    currActionPromise.then((result) => {
+      dispatch(changeFollowedStatusAC(id));
+      dispatch(disableUserFollowingStateAC(id));
+    });
+  };
+}
+
 export {
   usersReducer,
   loadUsersAC,
@@ -152,4 +178,6 @@ export {
   setFetchingStateAC,
   disableUserFollowingStateAC,
   toggleUserFollowingStateAC,
+  getUsersThunkCreator,
+  changeFollowedStatusThunkCreator,
 };

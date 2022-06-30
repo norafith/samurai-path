@@ -1,3 +1,5 @@
+import { profileAPI } from "../api/api";
+
 const ADD_POST = "ADD-POST";
 const CHANGE_DRAFT_POST = "CHANGE-DRAFT-POST";
 const SET_FETCHING_STATE = "SET_FETCHING_STATE_PROFILE";
@@ -88,7 +90,6 @@ function profileReducer(state = initialState, action) {
     }
 
     case SET_PROFILE_DATA: {
-      debugger;
       const stateCopy = { ...state };
       stateCopy.profileData = action.profileData;
       return stateCopy;
@@ -127,10 +128,21 @@ function setProfileDataAC(profileData) {
   };
 }
 
+function getProfileThunkCreator(id) {
+  return function getProfileThunk(dispatch, getState) {
+    dispatch(setFetchingStateAC(true));
+    return profileAPI.getProfile(id).then((result) => {
+      dispatch(setProfileDataAC(result));
+      dispatch(setFetchingStateAC(false));
+    });
+  };
+}
+
 export {
   profileReducer,
   addPostActionCreator,
   changeDraftPostActionCreator,
   setFetchingStateAC,
   setProfileDataAC,
+  getProfileThunkCreator,
 };

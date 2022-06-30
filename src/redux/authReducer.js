@@ -1,3 +1,5 @@
+import { authAPI } from "../api/api";
+
 const SET_FETCHING_STATE = "SET_FETCHING_STATE_AUTH";
 const SET_CURR_USER_DATA = "SET_CURR_USER_DATA";
 
@@ -41,4 +43,19 @@ function setFetchingStateAC(fetchingState) {
   };
 }
 
-export { authReducer, setCurrUserDataAC, setFetchingStateAC };
+function authCurrUserThunkCreator() {
+  return function authCurrUserThunk(dispatch, getState) {
+    dispatch(setFetchingStateAC(true));
+    authAPI.authCurrUser().then((result) => {
+      dispatch(setCurrUserDataAC(result));
+      dispatch(setFetchingStateAC(false));
+    });
+  };
+}
+
+export {
+  authReducer,
+  setCurrUserDataAC,
+  setFetchingStateAC,
+  authCurrUserThunkCreator,
+};

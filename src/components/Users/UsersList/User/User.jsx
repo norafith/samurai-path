@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./User.module.css";
 import userImg from "../../../../assets/user.png";
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../../../api/api";
 
 function User(props) {
   // let onlineStatusClass = classes.onlineStatus;
@@ -30,16 +29,7 @@ function User(props) {
       <div className={classes.additional}>
         <button
           disabled={props.followingUsers.includes(props.id)}
-          onClick={() => {
-            const currActionPromise = props.followed
-              ? usersAPI.unfollowUser(props.id)
-              : usersAPI.followUser(props.id);
-            props.toggleUserFollowingState(props.id);
-            currActionPromise.then((result) => {
-              props.changeFollowedStatus(props.id);
-              props.disableUserFollowingState(props.id);
-            });
-          }}
+          onClick={() => props.changeFollowedStatus(props.followed, props.id)}
         >
           {props.followed ? "Unfollow" : "Follow"}
         </button>

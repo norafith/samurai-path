@@ -1,4 +1,4 @@
-// import { usersList } from "./usersReducer";
+import { usersAPI } from "../api/api";
 
 const ADD_MESSAGE = "ADD-MESSAGE";
 const CHANGE_DRAFT_MESSAGE = "CHANGE-DRAFT-MESSAGE";
@@ -126,6 +126,16 @@ function setFetchingStateAC(fetchingState) {
   };
 }
 
+function getFriendsThunkCreator() {
+  return function getFriendsThunk(dispatch, getState) {
+    dispatch(setFetchingStateAC(true));
+    usersAPI.getFriends().then((result) => {
+      dispatch(setChatOptionsAC(result.items));
+      dispatch(setFetchingStateAC(false));
+    });
+  };
+}
+
 export {
   dialogsReducer,
   addMessageActionCreator,
@@ -133,4 +143,5 @@ export {
   setChatOptionsAC,
   changeSearchTextActionCreator,
   setFetchingStateAC,
+  getFriendsThunkCreator,
 };

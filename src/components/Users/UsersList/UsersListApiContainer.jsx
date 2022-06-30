@@ -1,20 +1,10 @@
 import React from "react";
-import { usersAPI } from "../../../api/api";
 import Preloader from "../../common/Preloader/Preloader";
 import UsersList from "./UsersList";
 
 class UsersListApiContainer extends React.Component {
-  getUsers(page) {
-    this.props.setFetchingState(true);
-    return usersAPI.getUsers(page).then((result) => {
-      this.props.loadUsers(result.items);
-      this.props.setTotalCount(result.totalCount);
-      this.props.setFetchingState(false);
-    });
-  }
-
   componentDidMount() {
-    this.getUsers(this.props.currentPage);
+    this.props.getUsers(this.props.currentPage);
   }
 
   render() {
@@ -31,11 +21,9 @@ class UsersListApiContainer extends React.Component {
             changeCurrentPageControlOffset={
               this.props.changeCurrentPageControlOffset
             }
-            getUsers={this.getUsers.bind(this)}
+            getUsers={this.props.getUsers}
             changeFollowedStatus={this.props.changeFollowedStatus}
             currentPage={this.props.currentPage}
-            disableUserFollowingState={this.props.disableUserFollowingState}
-            toggleUserFollowingState={this.props.toggleUserFollowingState}
             followingUsers={this.props.followingUsers}
           />
         )}

@@ -7,24 +7,17 @@ import {
   addPostActionCreator as addPost,
   setFetchingStateAC as setFetchingState,
   setProfileDataAC as setProfileData,
+  getProfileThunkCreator as getProfile,
 } from "../../redux/profileReducer";
-import { profileAPI } from "../../api/api";
 
 class ProfileApiContainer extends React.Component {
-  getProfile() {
-    this.props.setFetchingState(true);
-    return profileAPI.getProfile(this.props.params.id).then((result) => {
-      this.props.setProfileData(result);
-      this.props.setFetchingState(false);
-    });
-  }
-
   componentDidMount() {
-    this.getProfile();
+    this.props.getProfile(this.props.params.id);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.params.id !== prevProps.params.id) this.getProfile();
+    if (this.props.params.id !== prevProps.params.id)
+      this.props.getProfile(this.props.params.id);
   }
 
   render() {
@@ -45,6 +38,7 @@ const mapDispatchToProps = {
   addPost,
   setFetchingState,
   setProfileData,
+  getProfile,
 };
 const ProfileStoreContainer = connect(
   mapStateToProps,

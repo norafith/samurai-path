@@ -34,4 +34,10 @@ const usersAPI = {
   },
 };
 
-export { profileAPI, usersAPI };
+const authAPI = {
+  authCurrUser() {
+    return apiInstance.get("auth/me").then((result) => result.data);
+  },
+};
+
+export { profileAPI, usersAPI, authAPI };

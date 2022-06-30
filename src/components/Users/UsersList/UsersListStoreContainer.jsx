@@ -2,12 +2,8 @@ import { connect } from "react-redux";
 import {
   changeCurrentPageAC as changeCurrentPage,
   changeCurrentPageControlOffsetAC as changeCurrentPageControlOffset,
-  changeFollowedStatusAC as changeFollowedStatus,
-  loadUsersAC as loadUsers,
-  setFetchingStateAC as setFetchingState,
-  setTotalCountAC as setTotalCount,
-  toggleUserFollowingStateAC as toggleUserFollowingState,
-  disableUserFollowingStateAC as disableUserFollowingState,
+  changeFollowedStatusThunkCreator as changeFollowedStatus,
+  getUsersThunkCreator as getUsers,
 } from "../../../redux/usersReducer";
 import UsersListApiContainer from "./UsersListApiContainer";
 
@@ -23,14 +19,10 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  loadUsers,
+  getUsers,
   changeFollowedStatus,
   changeCurrentPage,
-  setTotalCount,
   changeCurrentPageControlOffset,
-  setFetchingState,
-  disableUserFollowingState,
-  toggleUserFollowingState,
 };
 
 const UsersListContainer = connect(
