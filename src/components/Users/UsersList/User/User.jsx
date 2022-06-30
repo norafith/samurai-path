@@ -29,13 +29,16 @@ function User(props) {
       </div>
       <div className={classes.additional}>
         <button
+          disabled={props.followingUsers.includes(props.id)}
           onClick={() => {
             const currActionPromise = props.followed
               ? usersAPI.unfollowUser(props.id)
               : usersAPI.followUser(props.id);
-            currActionPromise.then((result) =>
-              props.changeFollowedStatus(props.id)
-            );
+            props.toggleUserFollowingState(props.id);
+            currActionPromise.then((result) => {
+              props.changeFollowedStatus(props.id);
+              props.disableUserFollowingState(props.id);
+            });
           }}
         >
           {props.followed ? "Unfollow" : "Follow"}

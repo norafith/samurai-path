@@ -34,6 +34,9 @@ class UsersListApiContainer extends React.Component {
             getUsers={this.getUsers.bind(this)}
             changeFollowedStatus={this.props.changeFollowedStatus}
             currentPage={this.props.currentPage}
+            disableUserFollowingState={this.props.disableUserFollowingState}
+            toggleUserFollowingState={this.props.toggleUserFollowingState}
+            followingUsers={this.props.followingUsers}
           />
         )}
       </>

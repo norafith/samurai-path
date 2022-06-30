@@ -4,17 +4,15 @@ const CHANGE_CURRENT_PAGE = "CHANGE_CURRENT_PAGE";
 const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
 const CHANGE_CURRENT_PAGE_CONTROL_OFFSET = "CHANGE_CURRENT_PAGE_CONTROL_OFFSET";
 const SET_FETCHING_STATE = "SET_FETCHING_STATE_USERS";
+const TOGGLE_USER_FOLLOWING_STATE = "TOGGLE_USER_FOLLOWING_STATE";
+const DISABLE_USER_FOLLOWING_STATE = "DISABLE_USER_FOLLOWING_STATE";
 
 let initialState = {
   currentPage: 1,
   currentPageControlOffset: 0,
   usersList: [],
   isFetching: false,
-  // { userID: 1, name: "Sasha", onlineStatus: true, friendStatus: false },
-  // { userID: 2, name: "Julia", onlineStatus: true, friendStatus: false },
-  // { userID: 3, name: "Ira", onlineStatus: false, friendStatus: true },
-  // { userID: 4, name: "Mark", onlineStatus: false, friendStatus: false },
-  // { userID: 5, name: "John", onlineStatus: true, friendStatus: false },
+  followingUsers: [],
 };
 
 function usersReducer(state = initialState, action) {
@@ -34,6 +32,20 @@ function usersReducer(state = initialState, action) {
         }
         return user;
       });
+      return stateCopy;
+    }
+
+    case TOGGLE_USER_FOLLOWING_STATE: {
+      let stateCopy = { ...state };
+      stateCopy.followingUsers = [...stateCopy.followingUsers, action.userId];
+      return stateCopy;
+    }
+
+    case DISABLE_USER_FOLLOWING_STATE: {
+      let stateCopy = { ...state };
+      stateCopy.followingUsers = stateCopy.followingUsers.filter(
+        (item) => item !== action.userId
+      );
       return stateCopy;
     }
 
@@ -116,6 +128,20 @@ function setFetchingStateAC(isFetching) {
   };
 }
 
+function toggleUserFollowingStateAC(userId) {
+  return {
+    type: TOGGLE_USER_FOLLOWING_STATE,
+    userId,
+  };
+}
+
+function disableUserFollowingStateAC(userId) {
+  return {
+    type: DISABLE_USER_FOLLOWING_STATE,
+    userId,
+  };
+}
+
 export {
   usersReducer,
   loadUsersAC,
@@ -124,4 +150,6 @@ export {
   setTotalCountAC,
   changeCurrentPageControlOffsetAC,
   setFetchingStateAC,
+  disableUserFollowingStateAC,
+  toggleUserFollowingStateAC,
 };
