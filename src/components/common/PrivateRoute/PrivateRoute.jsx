@@ -1,7 +1,9 @@
 import { Navigate } from "react-router-dom";
 
 function PrivateRoute(props) {
-  if (props.authStatus) {
+  debugger;
+
+  if (props.authState) {
     return props.children;
   }
 

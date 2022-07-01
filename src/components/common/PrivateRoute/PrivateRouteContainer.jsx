@@ -3,7 +3,7 @@ import PrivateRoute from "./PrivateRoute";
 
 function mapStateToProps(state) {
   return {
-    authStatus: state.auth.authStatus,
+    authState: state.auth.authState,
   };
 }
 const PrivateRouteContainer = connect(mapStateToProps, {})(PrivateRoute);
