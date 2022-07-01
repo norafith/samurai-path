@@ -18,6 +18,7 @@ function mapStateToProps(state) {
     mobileStatus: state.navBar.mobileStatus,
     navBarOpenedStatus: state.navBar.openedStatus,
     currUserData: state.auth.currUserData,
+    fetchingState: state.auth.fetchingState,
   };
 }
 

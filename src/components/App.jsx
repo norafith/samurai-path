@@ -10,27 +10,25 @@ import Settings from "./Settings/Settings";
 import Users from "./Users/Users";
 import Preloader from "./common/Preloader/Preloader";
 
-
-
 function App(props) {
-  if (!props.currUserData) return <Preloader />
-	
+  if (props.fetchingState === null || props.fetchingState) return <Preloader />;
+
   let appWrapperClass = "";
-	
-	if (props.mobileStatus) {
-		appWrapperClass += " mobile";
-	}
-	
-	if (props.navBarOpenedStatus) {
-		appWrapperClass += " navBarOpened";
-	}
-	
+
+  if (props.mobileStatus) {
+    appWrapperClass += " mobile";
+  }
+
+  if (props.navBarOpenedStatus) {
+    appWrapperClass += " navBarOpened";
+  }
+
   return (
     <BrowserRouter>
       <div id="app-wrapper" className={appWrapperClass}>
         <HeaderContainer />
         <NavBarContainer />
-        <Routes> 
+        <Routes>
           <Route path="/profile/:id" element={<ProfileContainer />} />
           <Route path="/dialogs/*" element={<Dialogs />} />
           <Route path="/music" element={<Music />} />

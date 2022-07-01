@@ -7,7 +7,7 @@ function mapStateToProps(state) {
     sectionList: state.navBar.sectionList,
     mobileStatus: state.navBar.mobileStatus,
     navBarOpenedStatus: state.navBar.openedStatus,
-    currUserId: state.auth.currUserData.data.id,
+    currUserId: state.auth.currUserData?.data.id,
   };
 }
 
