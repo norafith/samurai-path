@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 function withLoginRedirect(Component) {
   function ContainerComponent(props) {
-    debugger;
     if (props.authState === false) return <Navigate replace to="/login" />;
     return <Component {...props} />;
   }
