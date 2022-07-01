@@ -2,6 +2,7 @@ import React from "react";
 import Profile from "./Profile";
 import withRouter from "./ProfileWithRouter";
 import { connect } from "react-redux";
+import withLoginRedirect from "./../hoc/withLoginRedirect";
 import {
   changeDraftPostActionCreator as changeDraftPost,
   addPostActionCreator as addPost,
@@ -47,4 +48,4 @@ const ProfileStoreContainer = connect(
 
 const ProfileUrlContainer = withRouter(ProfileStoreContainer);
 
-export default ProfileUrlContainer;
+export default withLoginRedirect(ProfileUrlContainer);

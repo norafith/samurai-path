@@ -2,14 +2,15 @@ import "./App.css";
 import HeaderContainer from "./Header/HeaderContainer";
 import NavBarContainer from "./NavBar/NavBarContainer";
 import ProfileContainer from "./Profile/ProfileContainer";
-import Dialogs from "./Dialogs/Dialogs";
+import DialogsContainer from "./Dialogs/DialogsContainer";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Music from "./Music/Music";
-import News from "./News/News";
-import Settings from "./Settings/Settings";
-import Users from "./Users/Users";
+import MusicContainer from "./Music/MusicContainer";
+import NewsContainer from "./News/NewsContainer";
+import SettingsContainer from "./Settings/SettingsContainer";
+import UsersContainer from "./Users/UsersContainer";
 import Preloader from "./common/Preloader/Preloader";
-import PrivateRoute from "./common/PrivateRoute/PrivateRouteContainer";
+// import PrivateRoute from "./common/PrivateRoute/PrivateRouteContainer";
+import ErrorPageContainer from "./ErrorPage/ErrorPageContainer";
 
 function App(props) {
   if (props.fetchingState) return <Preloader />;
@@ -31,62 +32,62 @@ function App(props) {
         <NavBarContainer />
         <Routes>
           <Route
-            path="*"
+            path="/*"
             element={
-              <PrivateRoute>
-                <h1>Page not found</h1>
-              </PrivateRoute>
+              // <PrivateRoute>
+              <ErrorPageContainer />
+              // </PrivateRoute>
             }
           />
           <Route
             path="/profile/:id"
             element={
-              <PrivateRoute>
-                <ProfileContainer />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <ProfileContainer />
+              // </PrivateRoute>
             }
           />
           <Route
             path="/dialogs/*"
             element={
-              <PrivateRoute>
-                <Dialogs />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <DialogsContainer />
+              // </PrivateRoute>
             }
           />
           <Route
             path="/music"
             element={
-              <PrivateRoute>
-                <Music />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <MusicContainer />
+              // </PrivateRoute>
             }
           />
           <Route
             path="/news"
             element={
-              <PrivateRoute>
-                <News />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <NewsContainer />
+              // </PrivateRoute>
             }
           />
           <Route
             path="/settings"
             element={
-              <PrivateRoute>
-                <Settings />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <SettingsContainer />
+              // </PrivateRoute>
             }
           />
           <Route
             path="/users"
             element={
-              <PrivateRoute>
-                <Users />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <UsersContainer />
+              // </PrivateRoute>
             }
           />
-          <Route path="/login" element={<h1>Login</h1>} />
+          <Route path="/login" element={<main>Login</main>} />
         </Routes>
       </div>
     </BrowserRouter>
