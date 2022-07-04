@@ -1,5 +1,6 @@
-import classes from "./MainUserInfo.module.css"
+import classes from "./MainUserInfo.module.css";
 import user from "../../../assets/user.png";
+import Status from "./Status/Status";
 
 function MainUserInfo(props) {
   return (
@@ -10,10 +11,8 @@ function MainUserInfo(props) {
         alt="user logo"
       />
       <div className={classes.userProperties}>
-        <div className={classes.username}>
-          {props.fullName}
-        </div>
-        <div className={classes.status}>{ props.status || "No status."}</div>
+        <div className={classes.username}>{props.fullName}</div>
+        <Status status={props.status} setStatus={props.setStatus} />
       </div>
     </section>
   );

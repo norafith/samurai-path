@@ -11,6 +11,7 @@ import UsersContainer from "./Users/UsersContainer";
 import Preloader from "./common/Preloader/Preloader";
 // import PrivateRoute from "./common/PrivateRoute/PrivateRouteContainer";
 import ErrorPageContainer from "./ErrorPage/ErrorPageContainer";
+import LoginContainer from "./Login/LoginContainer";
 
 function App(props) {
   if (props.fetchingState) return <Preloader />;
@@ -87,7 +88,7 @@ function App(props) {
               // </PrivateRoute>
             }
           />
-          <Route path="/login" element={<main>Login</main>} />
+          <Route path="/login" element={<LoginContainer />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -10,7 +10,26 @@ const apiInstance = axios.create({
 
 const profileAPI = {
   getProfile(id) {
-    return apiInstance.get(`profile/${id}`).then((result) => result.data);
+    return Promise.all([
+      apiInstance.get(`profile/${id}`),
+      apiInstance.get(`profile/status/${id}`),
+    ])
+      .then((result) => {
+        result[0] = result[0].data;
+        result[1] = result[1].data;
+        return result;
+      })
+      .then((result) => {
+        return { ...result[0], status: result[1] };
+      });
+  },
+
+  setStatus(status) {
+    return apiInstance
+      .put("profile/status", {
+        status: status,
+      })
+      .then((result) => result.data);
   },
 };
 
@@ -37,6 +56,20 @@ const usersAPI = {
 const authAPI = {
   authCurrUser() {
     return apiInstance.get("auth/me").then((result) => result.data);
+  },
+
+  loginAuth(login, password, rememberMe) {
+    return apiInstance
+      .post("auth/login", {
+        email: login,
+        password: password,
+        rememberMe: rememberMe,
+      })
+      .then((result) => {
+        result.data.data.id = result.data.data.userId;
+        delete result.data.data.userId;
+        return result.data;
+      });
   },
 };
 

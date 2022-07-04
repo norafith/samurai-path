@@ -1,0 +1,18 @@
+.status {
+  cursor: pointer;
+  user-select: none;
+}
+
+.status::after {
+  content: " edit";
+  position: relative;
+  bottom: 8px;
+  right: 4px;
+  transition: 0.2s ease;
+  font-size: 0.65em;
+  opacity: 0;
+}
+
+.status:hover::after {
+  opacity: 0.4;
+}

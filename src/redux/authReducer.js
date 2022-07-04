@@ -15,6 +15,7 @@ function authReducer(state = initialState, action) {
     case SET_CURR_USER_DATA: {
       const stateCopy = { ...state };
       stateCopy.currUserData = action.currUserData;
+      debugger;
       return stateCopy;
     }
 
@@ -73,9 +74,21 @@ function authCurrUserThunkCreator() {
   };
 }
 
+function loginAuthThunkCreator({ login, password, rememberMe = false }) {
+  return function loginAuthThunk(dispatch, setState) {
+    return authAPI.loginAuth(login, password, rememberMe).then((result) => {
+      if (result.resultCode === 0) {
+        dispatch(setCurrUserDataAC(result));
+        dispatch(setAuthStateAC(true));
+      }
+    });
+  };
+}
+
 export {
   authReducer,
   setCurrUserDataAC,
   setFetchingStateAC,
   authCurrUserThunkCreator,
+  loginAuthThunkCreator,
 };

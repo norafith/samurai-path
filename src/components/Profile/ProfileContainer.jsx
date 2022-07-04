@@ -2,6 +2,7 @@ import React from "react";
 import Profile from "./Profile";
 import withRouter from "./ProfileWithRouter";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import withLoginRedirect from "./../hoc/withLoginRedirect";
 import {
   changeDraftPostActionCreator as changeDraftPost,
@@ -9,6 +10,7 @@ import {
   setFetchingStateAC as setFetchingState,
   setProfileDataAC as setProfileData,
   getProfileThunkCreator as getProfile,
+  setStatusThunkCreator as setStatus,
 } from "../../redux/profileReducer";
 
 class ProfileApiContainer extends React.Component {
@@ -40,12 +42,13 @@ const mapDispatchToProps = {
   setFetchingState,
   setProfileData,
   getProfile,
+  setStatus,
 };
-const ProfileStoreContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+
+const ProfileSuperContainer = compose(
+  withLoginRedirect,
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
 )(ProfileApiContainer);
 
-const ProfileUrlContainer = withRouter(ProfileStoreContainer);
-
-export default withLoginRedirect(ProfileUrlContainer);
+export default ProfileSuperContainer;

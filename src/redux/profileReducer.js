@@ -4,6 +4,7 @@ const ADD_POST = "ADD-POST";
 const CHANGE_DRAFT_POST = "CHANGE-DRAFT-POST";
 const SET_FETCHING_STATE = "SET_FETCHING_STATE_PROFILE";
 const SET_PROFILE_DATA = "SET_PROFILE_DATA";
+const SET_STATUS = "SET_STATUS";
 
 let initialState = {
   posts: {
@@ -43,7 +44,7 @@ let initialState = {
     draftPost: "",
   },
 
-  currUserId: 24584, // should be taken when user signed in
+  profileData: null,
   fetchingState: null,
 };
 
@@ -95,6 +96,13 @@ function profileReducer(state = initialState, action) {
       return stateCopy;
     }
 
+    case SET_STATUS: {
+      const stateCopy = { ...state };
+      stateCopy.profileData = { ...stateCopy.profileData };
+      stateCopy.profileData.status = action.status;
+      return stateCopy;
+    }
+
     default: {
       return state;
     }
@@ -128,12 +136,31 @@ function setProfileDataAC(profileData) {
   };
 }
 
+function setStatusAC(status) {
+  return {
+    type: SET_STATUS,
+    status,
+  };
+}
+
 function getProfileThunkCreator(id) {
   return function getProfileThunk(dispatch, getState) {
     dispatch(setFetchingStateAC(true));
     return profileAPI.getProfile(id).then((result) => {
       dispatch(setProfileDataAC(result));
       dispatch(setFetchingStateAC(false));
+    });
+  };
+}
+
+function setStatusThunkCreator(status) {
+  return function setStatusThunk(dispatch, getState) {
+    return profileAPI.setStatus(status).then((result) => {
+      if (result.resultCode === 0) {
+        dispatch(setStatusAC(status));
+      } else {
+        throw new Error("Error when submitting new status.");
+      }
     });
   };
 }
@@ -145,4 +172,5 @@ export {
   setFetchingStateAC,
   setProfileDataAC,
   getProfileThunkCreator,
+  setStatusThunkCreator,
 };

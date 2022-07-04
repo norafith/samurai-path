@@ -1,4 +1,4 @@
-import MainUserInfo  from "./MainUserInfo/MainUserInfo"
+import MainUserInfo from "./MainUserInfo/MainUserInfo";
 import UserDescription from "./UserDescription/UserDescription";
 import PostsBlock from "./PostsBlock/PostsBlock";
 import classes from "./Profile.module.css";
@@ -7,8 +7,8 @@ import LookingForAJob from "./LookingForAJobBlock/LookingForAJobBlock";
 import Contacts from "./Contacts/Contacts";
 
 function Profile(props) {
-  if (props.fetchingState === null || props.fetchingState) return <Preloader />
-  
+  if (props.fetchingState === null || props.fetchingState) return <Preloader />;
+
   return (
     <main className={classes.profile}>
       <MainUserInfo
@@ -16,17 +16,14 @@ function Profile(props) {
         fullName={props.profileData.fullName}
         userId={props.profileData.userId}
         status={props.profileData.status}
+        setStatus={props.setStatus}
       />
-      <UserDescription
-        aboutMe={props.profileData.aboutMe}
-      />
+      <UserDescription aboutMe={props.profileData.aboutMe} />
       <LookingForAJob
         lookingForAJob={props.profileData.lookingForAJob}
         lookingForAJobDescription={props.profileData.lookingForAJobDescription}
       />
-      <Contacts
-        contacts={props.profileData.contacts}
-      />
+      <Contacts contacts={props.profileData.contacts} />
       <PostsBlock
         postsList={props.postsList}
         draftPostValue={props.draftPostValue}
@@ -35,7 +32,7 @@ function Profile(props) {
         addPost={props.addPost}
       />
     </main>
-  )
+  );
 }
 
 export default Profile;
