@@ -1,37 +1,38 @@
 import React from "react";
 import classes from "./WriteMessageBar.module.css";
 import sendMessageImg from "./sendMessage.png";
+import { Form, Field } from "react-final-form";
 
 function WriteMessage(props) {
   const inputFieldRef = React.createRef();
 
-  function newMessage(event) {
-    if (event.type !== "click" && event.key !== "Enter") return;
-    props.addMessage();
-  }
-
-  function inputHandler() {
-    let text = inputFieldRef.current.value;
-    props.changeDraftMessage(text);
+  function MyForm(props) {
+    return (
+      <form onSubmit={props.handleSubmit} className={classes.writeMessage}>
+        <Field
+          component="input"
+          name="message"
+          type="text"
+          ref={inputFieldRef}
+          className={classes.writeMessageText}
+          placeholder="Write a message..."
+          value={props.draftMessage}
+        />
+        <button
+          style={{ backgroundImage: `url(${sendMessageImg})` }}
+          className={classes.sendMessage}
+        ></button>
+      </form>
+    );
   }
 
   return (
-    <div className={classes.writeMessage}>
-      <input
-        type="text"
-        ref={inputFieldRef}
-        onChange={inputHandler}
-        onKeyPress={newMessage}
-        className={classes.writeMessageText}
-        placeholder="Write a message..."
-        value={props.draftMessage}
-      />
-      <button
-        onClick={newMessage}
-        style={{ backgroundImage: `url(${sendMessageImg})` }}
-        className={classes.sendMessage}
-      ></button>
-    </div>
+    <Form
+      onSubmit={props.addMessage}
+      render={({ handleSubmit }) => (
+        <MyForm {...props} handleSubmit={handleSubmit} />
+      )}
+    />
   );
 }
 

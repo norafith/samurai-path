@@ -1,7 +1,6 @@
 import { usersAPI } from "../api/api";
 
 const ADD_MESSAGE = "ADD-MESSAGE";
-const CHANGE_DRAFT_MESSAGE = "CHANGE-DRAFT-MESSAGE";
 const CHANGE_SEARCH_TEXT = "CHANGE-SEARCH-TEXT";
 const SET_CHAT_OPTIONS = "SET_CHAT_OPTIONS";
 const SET_FETCHING_STATE = "SET_FETCHING_STATE_DIALOGS";
@@ -21,8 +20,6 @@ const initialState = {
       { text: "N. 135, 255, 666", messageID: 5, userID: 2 },
       { text: "spasibo, bratishka <3", messageID: 6, userID: 1 },
     ],
-
-    draftMessage: "",
   },
 
   draftSearch: "",
@@ -37,24 +34,15 @@ function dialogsReducer(state = initialState, action) {
       stateCopy.messages.messagesList = [...state.messages.messagesList];
 
       const currMessageID = 22222;
-      // TODO
+      // should be calculated with server data
 
       const messageObj = {
-        text: stateCopy.messages.draftMessage,
+        text: action.messageText,
         messageID: currMessageID,
         userID: 2, // curr user id = 2
       };
 
       stateCopy.messages.messagesList.push(messageObj);
-      stateCopy.messages.draftMessage = "";
-
-      return stateCopy;
-    }
-
-    case CHANGE_DRAFT_MESSAGE: {
-      const stateCopy = { ...state };
-      stateCopy.messages = { ...state.messages };
-      stateCopy.messages.draftMessage = action.text;
 
       return stateCopy;
     }
@@ -92,16 +80,10 @@ function dialogsReducer(state = initialState, action) {
   }
 }
 
-function addMessageActionCreator() {
+function addMessageActionCreator(data) {
   return {
     type: ADD_MESSAGE,
-  };
-}
-
-function changeDraftMessageActionCreator(messageText) {
-  return {
-    type: CHANGE_DRAFT_MESSAGE,
-    text: messageText,
+    messageText: data.message,
   };
 }
 
@@ -139,7 +121,6 @@ function getFriendsThunkCreator() {
 export {
   dialogsReducer,
   addMessageActionCreator,
-  changeDraftMessageActionCreator,
   setChatOptionsAC,
   changeSearchTextActionCreator,
   setFetchingStateAC,

@@ -75,6 +75,7 @@ function authCurrUserThunkCreator() {
 }
 
 function loginAuthThunkCreator({ login, password, rememberMe = false }) {
+  debugger;
   return function loginAuthThunk(dispatch, setState) {
     return authAPI.loginAuth(login, password, rememberMe).then((result) => {
       if (result.resultCode === 0) {
