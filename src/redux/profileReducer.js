@@ -1,7 +1,6 @@
 import { profileAPI } from "../api/api";
 
 const ADD_POST = "ADD-POST";
-const CHANGE_DRAFT_POST = "CHANGE-DRAFT-POST";
 const SET_FETCHING_STATE = "SET_FETCHING_STATE_PROFILE";
 const SET_PROFILE_DATA = "SET_PROFILE_DATA";
 const SET_STATUS = "SET_STATUS";
@@ -40,8 +39,6 @@ let initialState = {
         username: "Bold Master",
       },
     ],
-
-    draftPost: "",
   },
 
   profileData: null,
@@ -63,22 +60,13 @@ function profileReducer(state = initialState, action) {
 
       let postObj = {
         date: currDate,
-        text: stateCopy.posts.draftPost,
+        text: action.postText,
         likeAmount: 0,
         username: "Bold Master",
       };
 
       stateCopy.posts.draftPost = "";
       stateCopy.posts.postsList.push(postObj);
-
-      return stateCopy;
-    }
-
-    case CHANGE_DRAFT_POST: {
-      const stateCopy = { ...state };
-      stateCopy.posts = { ...state.posts };
-
-      stateCopy.posts.draftPost = action.text;
 
       return stateCopy;
     }
@@ -109,16 +97,10 @@ function profileReducer(state = initialState, action) {
   }
 }
 
-function addPostActionCreator() {
+function addPostActionCreator(data) {
   return {
     type: ADD_POST,
-  };
-}
-
-function changeDraftPostActionCreator(text) {
-  return {
-    type: CHANGE_DRAFT_POST,
-    text,
+    postText: data.postText,
   };
 }
 
@@ -168,7 +150,6 @@ function setStatusThunkCreator(status) {
 export {
   profileReducer,
   addPostActionCreator,
-  changeDraftPostActionCreator,
   setFetchingStateAC,
   setProfileDataAC,
   getProfileThunkCreator,

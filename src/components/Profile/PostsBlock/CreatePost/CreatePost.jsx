@@ -1,20 +1,30 @@
 import React from "react";
 import classes from "./CreatePost.module.css";
+import { Form, Field } from "react-final-form";
 
 function CreatePost(props) {
-  const textareaRef = React.createRef();
-
-  function textareaInputHandler() {
-    let text = textareaRef.current.value;
-    props.changeDraftPost(text);
+  function MyForm(props) {
+    return (
+      <form onSubmit={props.handleSubmit} className={classes.createPost}>
+        <Field
+          component="textarea"
+          name="postText"
+          className={classes.content}
+          placeholder="Write something..."
+        />
+        <button className={classes.createButton}>Create</button>
+      </form>
+    );
   }
 
   return (
-    <div className={classes.createPost}>
-      <textarea onChange={textareaInputHandler} ref={textareaRef} className={classes.content} placeholder="Write something..." value={props.draftPostValue}/>
-      <button onClick={props.addPost} className={classes.createButton}>Create</button>
-    </div>
+    <Form
+      onSubmit={props.addPost}
+      render={({ handleSubmit }) => (
+        <MyForm {...props} handleSubmit={handleSubmit} />
+      )}
+    />
   );
 }
 
-export default CreatePost
+export default CreatePost;

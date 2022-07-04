@@ -26,8 +26,6 @@ function Profile(props) {
       <Contacts contacts={props.profileData.contacts} />
       <PostsBlock
         postsList={props.postsList}
-        draftPostValue={props.draftPostValue}
-        changeDraftPost={props.changeDraftPost}
         createBtnHandler={props.createBtnHandler}
         addPost={props.addPost}
       />

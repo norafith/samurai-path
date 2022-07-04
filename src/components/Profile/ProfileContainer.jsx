@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import withLoginRedirect from "./../hoc/withLoginRedirect";
 import {
-  changeDraftPostActionCreator as changeDraftPost,
   addPostActionCreator as addPost,
   setFetchingStateAC as setFetchingState,
   setProfileDataAC as setProfileData,
@@ -31,13 +30,11 @@ class ProfileApiContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     postsList: state.profile.posts.postsList,
-    draftPostValue: state.profile.posts.draftPost,
     profileData: state.profile.profileData,
     fetchingState: state.profile.fetchingState,
   };
 }
 const mapDispatchToProps = {
-  changeDraftPost,
   addPost,
   setFetchingState,
   setProfileData,
