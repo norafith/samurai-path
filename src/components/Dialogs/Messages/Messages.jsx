@@ -11,7 +11,6 @@ function Messages(props) {
       userID={message.userID}
     />
   ));
-  debugger;
   return (
     <div className={classes.messages}>
       <div className={classes.messagesList}>{messageElements}</div>

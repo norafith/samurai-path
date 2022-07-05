@@ -14,7 +14,11 @@
 }
 
 .writeMessageText:focus {
-  border-bottom: none !important; 
+  border: 2px solid transparent !important; 
+}
+
+.writeMessageText.error {
+  border: 2px solid red !important;
 }
 
 .sendMessage {
