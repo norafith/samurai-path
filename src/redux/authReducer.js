@@ -74,11 +74,22 @@ function authCurrUserThunkCreator() {
 }
 
 function loginAuthThunkCreator({ login, password, rememberMe = false }) {
-  return function loginAuthThunk(dispatch, setState) {
+  return function loginAuthThunk(dispatch, getState) {
     return authAPI.loginAuth(login, password, rememberMe).then((result) => {
       if (result.resultCode === 0) {
         dispatch(setCurrUserDataAC(result));
         dispatch(setAuthStateAC(true));
+      }
+    });
+  };
+}
+
+function logoutThunkCreator() {
+  return function logoutThunk(dispatch, getState) {
+    return authAPI.logout().then((result) => {
+      if (result.resultCode === 0) {
+        dispatch(setCurrUserDataAC(null));
+        dispatch(setAuthStateAC(false));
       }
     });
   };
@@ -90,4 +101,5 @@ export {
   setFetchingStateAC,
   authCurrUserThunkCreator,
   loginAuthThunkCreator,
+  logoutThunkCreator,
 };

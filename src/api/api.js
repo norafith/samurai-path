@@ -71,6 +71,10 @@ const authAPI = {
         return result.data;
       });
   },
+
+  logout() {
+    return apiInstance.delete("auth/login").then((result) => result.data);
+  },
 };
 
 export { profileAPI, usersAPI, authAPI };

@@ -1,5 +1,6 @@
 import classes from "./NavBar.module.css";
 import NavOption from "./NavOption/NavOption";
+import LogoutContainer from "./Logout/LogoutContainer";
 
 function NavBar(props) {
   const navElements = props.sectionList.map((option) =>
@@ -27,7 +28,10 @@ function NavBar(props) {
       >
         X
       </div>
-      <ul className={classes.menu}>{navElements}</ul>
+      <ul className={classes.menu}>
+        {navElements}
+        <LogoutContainer />
+      </ul>
     </nav>
   );
 }
