@@ -2,8 +2,12 @@ import { Form, Field } from "react-final-form";
 import FieldInputContainer from "../common/FieldInputContainer/FieldInputContainer";
 import createFormTest from "./../../validation/validation";
 import classes from "./Login.module.css";
+import { Navigate } from "react-router-dom";
 
 function Login(props) {
+  if (props.authState)
+    return <Navigate replace to={`/profile/${props.currUserId}`} />;
+
   return (
     <main>
       <Form
