@@ -8,6 +8,14 @@
   width: 100%;
 }
 
+.content.error {
+  border: 2px solid red;
+}
+
+.content.error:focus {
+  border-bottom: 2px solid red;
+}
+
 .createButton {
   width: 100px;
   padding: 5px;

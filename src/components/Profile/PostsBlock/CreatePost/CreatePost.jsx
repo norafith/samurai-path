@@ -1,15 +1,18 @@
 import React from "react";
 import classes from "./CreatePost.module.css";
-import { Form, Field } from "react-final-form";
+import { Form } from "react-final-form";
+import createFormTest from "./../../../../validation/validation";
+import FieldInputContainer from "./../../../common/FieldInputContainer/FieldInputContainer";
 
 function CreatePost(props) {
   function MyForm(props) {
     return (
       <form onSubmit={props.handleSubmit} className={classes.createPost}>
-        <Field
-          component="textarea"
+        <FieldInputContainer
           name="postText"
-          className={classes.content}
+          type="text"
+          initialClass={classes.content}
+          errorClass={classes.error}
           placeholder="Write something..."
         />
         <button className={classes.createButton}>Create</button>
@@ -20,6 +23,7 @@ function CreatePost(props) {
   return (
     <Form
       onSubmit={props.addPost}
+      validate={createFormTest(50)}
       render={({ handleSubmit }) => (
         <MyForm {...props} handleSubmit={handleSubmit} />
       )}

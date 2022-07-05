@@ -7,7 +7,7 @@ const createValidation = {
 
   loginPasswordCheck() {
     return function (string) {
-      const regEx = /[a-z][A-Z][0-9][@.]/;
+      const regEx = /[a-zA-Z0-9@.]/;
       return string.match(regEx);
     };
   },
