@@ -28,7 +28,11 @@ class Status extends React.Component {
   render() {
     debugger;
     return (
-      <div>
+      <div
+        className={
+          this.props.isCurrUserPage ? classes.currUserStatusContainer : ""
+        }
+      >
         {this.state.changeMode ? (
           <input
             autoFocus={true}
@@ -40,7 +44,11 @@ class Status extends React.Component {
           />
         ) : (
           <div
-            onDoubleClick={this.enableChangeMode.bind(this)}
+            onDoubleClick={
+              this.props.isCurrUserPage
+                ? this.enableChangeMode.bind(this)
+                : () => {}
+            }
             className={classes.status}
           >
             {this.props.status || "No status."}

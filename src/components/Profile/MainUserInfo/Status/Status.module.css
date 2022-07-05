@@ -1,9 +1,9 @@
-.status {
+.currUserStatusContainer > .status {
   cursor: pointer;
   user-select: none;
 }
 
-.status::after {
+.currUserStatusContainer > .status::after {
   content: " edit";
   position: relative;
   bottom: 8px;
@@ -13,6 +13,6 @@
   opacity: 0;
 }
 
-.status:hover::after {
+.currUserStatusContainer > .status:hover::after {
   opacity: 0.4;
 }

@@ -17,6 +17,7 @@ function Profile(props) {
         userId={props.profileData.userId}
         status={props.profileData.status}
         setStatus={props.setStatus}
+        isCurrUserPage={props.isCurrUserPage}
       />
       <UserDescription aboutMe={props.profileData.aboutMe} />
       <LookingForAJob

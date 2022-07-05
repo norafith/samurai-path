@@ -32,6 +32,8 @@ function mapStateToProps(state) {
     postsList: state.profile.posts.postsList,
     profileData: state.profile.profileData,
     fetchingState: state.profile.fetchingState,
+    isCurrUserPage:
+      state.auth.currUserData?.data.id === state.profile.profileData?.userId,
   };
 }
 const mapDispatchToProps = {

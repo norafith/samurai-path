@@ -12,7 +12,11 @@ function MainUserInfo(props) {
       />
       <div className={classes.userProperties}>
         <div className={classes.username}>{props.fullName}</div>
-        <Status status={props.status} setStatus={props.setStatus} />
+        <Status
+          status={props.status}
+          setStatus={props.setStatus}
+          isCurrUserPage={props.isCurrUserPage}
+        />
       </div>
     </section>
   );
