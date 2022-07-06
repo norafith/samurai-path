@@ -7,6 +7,11 @@ import {
   setFetchingStateAC as setFetchingState,
 } from "../../../redux/dialogsReducer";
 import { usersAPI } from "../../../api/api";
+import {
+  getDialogsFetchingState,
+  getDialogsSearchText,
+  getShownChatOptions,
+} from "../../../redux/selectors/dialogsSelector";
 
 class ChatListApiContainer extends React.Component {
   componentDidMount() {
@@ -24,9 +29,9 @@ class ChatListApiContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    shownChatOptions: state.dialogs.shownChatOptions,
-    searchText: state.dialogs.searchText,
-    fetchingState: state.dialogs.fetchingState,
+    shownChatOptions: getShownChatOptions(state),
+    searchText: getDialogsSearchText(state),
+    fetchingState: getDialogsFetchingState(state),
   };
 }
 const mapDispatchToProps = {

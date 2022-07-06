@@ -1,13 +1,19 @@
 import { connect } from "react-redux";
 import { changeNavBarOpenedStatusActionCreator as changeNavBarOpenedStatus } from "../../redux/navBarReducer";
+import { getCurrUserId } from "../../redux/selectors/authSelector";
+import {
+  getMobileStatus,
+  getNavbarOpenedStatus,
+  getNavBarSectionList,
+} from "../../redux/selectors/navBarSelector";
 import NavBar from "./NavBar";
 
 function mapStateToProps(state) {
   return {
-    sectionList: state.navBar.sectionList,
-    mobileStatus: state.navBar.mobileStatus,
-    navBarOpenedStatus: state.navBar.openedStatus,
-    currUserId: state.auth.currUserData?.data.id,
+    sectionList: getNavBarSectionList(state),
+    mobileStatus: getMobileStatus(state),
+    navBarOpenedStatus: getNavbarOpenedStatus(state),
+    currUserId: getCurrUserId(state),
   };
 }
 

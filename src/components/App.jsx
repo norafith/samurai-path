@@ -8,14 +8,11 @@ import MusicContainer from "./Music/MusicContainer";
 import NewsContainer from "./News/NewsContainer";
 import SettingsContainer from "./Settings/SettingsContainer";
 import UsersContainer from "./Users/UsersContainer";
-import Preloader from "./common/Preloader/Preloader";
 // import PrivateRoute from "./common/PrivateRoute/PrivateRouteContainer";
 import ErrorPageContainer from "./ErrorPage/ErrorPageContainer";
 import LoginContainer from "./Login/LoginContainer";
 
 function App(props) {
-  if (!props.isAppInitialized) return <Preloader />;
-
   let appWrapperClass = "";
 
   if (props.mobileStatus) {

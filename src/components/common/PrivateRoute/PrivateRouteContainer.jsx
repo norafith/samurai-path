@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
+import { getAuthState } from "../../../redux/selectors/authSelector";
 import PrivateRoute from "./PrivateRoute";
 
 function mapStateToProps(state) {
   return {
-    authState: state.auth.authState,
+    authState: getAuthState(state),
   };
 }
 const PrivateRouteContainer = connect(mapStateToProps, {})(PrivateRoute);

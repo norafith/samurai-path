@@ -1,11 +1,15 @@
 import { connect } from "react-redux";
 import Login from "./Login";
 import { loginAuthThunkCreator as loginAuth } from "../../redux/authReducer";
+import {
+  getAuthState,
+  getCurrUserId,
+} from "../../redux/selectors/authSelector";
 
 function mapStateToProps(state) {
   return {
-    authState: state.auth.authState,
-    currUserId: state.auth.currUserData?.data.id,
+    authState: getAuthState(state),
+    currUserId: getCurrUserId(state),
   };
 }
 const mapDispatchToProps = { loginAuth };

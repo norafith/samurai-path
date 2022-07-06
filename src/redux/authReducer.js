@@ -61,7 +61,7 @@ function setAuthStateAC(authState) {
 function authCurrUserThunkCreator() {
   return function authCurrUserThunk(dispatch, getState) {
     dispatch(setFetchingStateAC(true));
-    authAPI.authCurrUser().then((result) => {
+    return authAPI.authCurrUser().then((result) => {
       if (result.resultCode === 0) {
         dispatch(setCurrUserDataAC(result));
         dispatch(setAuthStateAC(true));

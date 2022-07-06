@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { getAuthState } from "../../redux/selectors/authSelector";
 
 function withLoginRedirect(Component) {
   function ContainerComponent(props) {
@@ -9,7 +10,7 @@ function withLoginRedirect(Component) {
 
   function mapStateToProps(state) {
     return {
-      authState: state.auth.authState,
+      authState: getAuthState(state),
     };
   }
   const ConnectedContainerComponent = connect(

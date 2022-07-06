@@ -28,7 +28,7 @@ function appInitializedAC() {
 
 function initializeAppThunkCreator() {
   return function (dispatch, getState) {
-    Promise.all([dispatch(authCurrUserThunkCreator())]).then((result) =>
+    return Promise.all([dispatch(authCurrUserThunkCreator())]).then((result) =>
       dispatch(appInitializedAC())
     );
   };

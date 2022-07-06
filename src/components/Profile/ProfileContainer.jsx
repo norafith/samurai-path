@@ -11,6 +11,12 @@ import {
   getProfileThunkCreator as getProfile,
   setStatusThunkCreator as setStatus,
 } from "../../redux/profileReducer";
+import {
+  getPostsList,
+  getProfileData,
+  getProfileFetchingState,
+} from "../../redux/selectors/profileSelector";
+import { getCurrUserData } from "../../redux/selectors/authSelector";
 
 class ProfileApiContainer extends React.Component {
   componentDidMount() {
@@ -27,13 +33,22 @@ class ProfileApiContainer extends React.Component {
   }
 }
 
+// function mapStateToProps(state) {
+//   return {
+//     postsList: state.profile.posts.postsList,
+//     profileData: state.profile.profileData,
+//     fetchingState: state.profile.fetchingState,
+//     isCurrUserPage:
+//       state.auth.currUserData?.data.id === state.profile.profileData?.userId,
+//   };
+// }
 function mapStateToProps(state) {
   return {
-    postsList: state.profile.posts.postsList,
-    profileData: state.profile.profileData,
-    fetchingState: state.profile.fetchingState,
+    postsList: getPostsList(state),
+    profileData: getProfileData(state),
+    fetchingState: getProfileFetchingState(state),
     isCurrUserPage:
-      state.auth.currUserData?.data.id === state.profile.profileData?.userId,
+      getCurrUserData(state)?.data.id === getProfileData(state)?.userId,
   };
 }
 const mapDispatchToProps = {

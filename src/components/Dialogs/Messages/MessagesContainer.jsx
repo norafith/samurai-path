@@ -1,6 +1,7 @@
 import Messages from "./Messages";
 import { addMessageActionCreator as addMessage } from "../../../redux/dialogsReducer";
 import { connect } from "react-redux";
+import { getMessagesList } from "../../../redux/selectors/dialogsSelector";
 
 // function MessagesContainer(props) {
 // 	let draftMessageText = props.store.getState().dialogs.messages.draftMessage;
@@ -23,8 +24,7 @@ import { connect } from "react-redux";
 
 function mapStateToProps(state) {
   return {
-    messagesList: state.dialogs.messages.messagesList,
-    draftMessage: state.dialogs.messages.draftMessage,
+    messagesList: getMessagesList(state),
   };
 }
 
