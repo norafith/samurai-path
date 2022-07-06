@@ -14,7 +14,7 @@ import ErrorPageContainer from "./ErrorPage/ErrorPageContainer";
 import LoginContainer from "./Login/LoginContainer";
 
 function App(props) {
-  if (props.fetchingState) return <Preloader />;
+  if (!props.isAppInitialized) return <Preloader />;
 
   let appWrapperClass = "";
 

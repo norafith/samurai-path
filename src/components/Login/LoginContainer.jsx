@@ -3,8 +3,6 @@ import Login from "./Login";
 import { loginAuthThunkCreator as loginAuth } from "../../redux/authReducer";
 
 function mapStateToProps(state) {
-  debugger;
-
   return {
     authState: state.auth.authState,
     currUserId: state.auth.currUserData?.data.id,

@@ -1,4 +1,5 @@
 import { authAPI } from "../api/api";
+import { FORM_ERROR } from "final-form";
 
 const SET_FETCHING_STATE = "SET_FETCHING_STATE_AUTH";
 const SET_CURR_USER_DATA = "SET_CURR_USER_DATA";
@@ -79,6 +80,8 @@ function loginAuthThunkCreator({ login, password, rememberMe = false }) {
       if (result.resultCode === 0) {
         dispatch(setCurrUserDataAC(result));
         dispatch(setAuthStateAC(true));
+      } else {
+        return { [FORM_ERROR]: result.messages[0] };
       }
     });
   };

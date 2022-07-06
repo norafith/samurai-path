@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import App from "./App";
-import { authCurrUserThunkCreator as authCurrUser } from "../redux/authReducer";
+import { initializeAppThunkCreator as initializeApp } from "../redux/appReducer";
 
 class AppApiContainer extends React.Component {
   componentDidMount() {
-    this.props.authCurrUser();
+    this.props.initializeApp();
   }
 
   render() {
@@ -18,13 +18,12 @@ function mapStateToProps(state) {
     mobileStatus: state.navBar.mobileStatus,
     navBarOpenedStatus: state.navBar.openedStatus,
     currUserData: state.auth.currUserData,
-    fetchingState: state.auth.fetchingState,
-    authState: state.auth.authState,
+    isAppInitialized: state.app.isInitialized,
   };
 }
 
 const dispatchStateToProps = {
-  authCurrUser,
+  initializeApp,
 };
 
 const AppContainer = connect(

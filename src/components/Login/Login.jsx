@@ -42,6 +42,7 @@ function MyForm(props) {
         <Field component="input" type="checkbox" name="rememberMe" />
         remember me
       </div>
+      <div>{props.submitError}</div>
       <div>
         <button type="submit" disabled={props.submitting || props.pristine}>
           Submit
