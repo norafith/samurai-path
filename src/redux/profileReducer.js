@@ -9,30 +9,35 @@ let initialState = {
   posts: {
     postsList: [
       {
+        id: 0,
         date: "23.02.2022",
         text: "Sorry for what?",
         likeAmount: 5,
         username: "Bold Master",
       },
       {
+        id: 1,
         date: "24.02.2022",
         text: "Our daddy told us not to be ashamed of our dicks, especially since they are such good size and all",
         likeAmount: 25,
         username: "Bold Master",
       },
       {
+        id: 2,
         date: "25.02.2022",
         text: "It gets bigger when I pull on it",
         likeAmount: 35,
         username: "Bold Master",
       },
       {
+        id: 3,
         date: "25.02.2022",
         text: "Sometimes I pull it on so hard I rip the skin",
         likeAmount: 45,
         username: "Bold Master",
       },
       {
+        id: 4,
         date: "26.02.2022",
         text: "Can you show me?",
         likeAmount: 55,

@@ -6,6 +6,7 @@ function UsersList(props) {
   const usersElements = props.users.map((user) => {
     return (
       <User
+        key={user.id}
         name={user.name}
         id={user.id}
         followed={user.followed}
@@ -30,6 +31,7 @@ function UsersList(props) {
 
     pageControlElements.push(
       <span
+        key={i}
         className={className}
         onClick={() => {
           props.changeCurrentPage(i);

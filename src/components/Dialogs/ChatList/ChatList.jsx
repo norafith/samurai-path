@@ -6,7 +6,7 @@ import Preloader from "../../common/Preloader/Preloader";
 
 function ChatList(props) {
   const chatOptionsElements = props.shownChatOptions.map((option) => (
-    <ChatOption userID={option.id} name={option.name} />
+    <ChatOption key={option.id} userID={option.id} name={option.name} />
   ));
 
   return (

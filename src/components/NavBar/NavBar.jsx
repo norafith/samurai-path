@@ -5,9 +5,9 @@ import LogoutContainer from "./Logout/LogoutContainer";
 function NavBar(props) {
   const navElements = props.sectionList.map((option) =>
     option === "Profile" ? (
-      <NavOption name={option} currUserId={props.currUserId} />
+      <NavOption name={option} key={option} currUserId={props.currUserId} />
     ) : (
-      <NavOption name={option} />
+      <NavOption name={option} key={option} />
     )
   );
 

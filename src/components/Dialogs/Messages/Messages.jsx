@@ -6,6 +6,7 @@ import WriteMessageBar from "./WriteMessageBar/WriteMessageBar";
 function Messages(props) {
   const messageElements = props.messagesList.map((message) => (
     <Message
+      key={message.messageID}
       text={message.text}
       messageID={message.messageID}
       userID={message.userID}

@@ -6,6 +6,7 @@ function PostsBlock(props) {
   const postsElements = props.postsList.map((post) => {
     return (
       <Post
+        key={post.id}
         date={post.date}
         text={post.text}
         likeAmount={post.likeAmount}
