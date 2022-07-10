@@ -10,7 +10,7 @@ import {
   setProfileDataAC as setProfileData,
   getProfileThunkCreator as getProfile,
   setStatusThunkCreator as setStatus,
-} from "../../redux/profileReducer";
+} from "../../redux/reducers/profileReducer";
 import {
   getPostsList,
   getProfileData,

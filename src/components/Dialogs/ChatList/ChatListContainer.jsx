@@ -5,7 +5,7 @@ import {
   changeSearchTextActionCreator as changeSearchText,
   setChatOptionsAC as setChatOptions,
   setFetchingStateAC as setFetchingState,
-} from "../../../redux/dialogsReducer";
+} from "../../../redux/reducers/dialogsReducer";
 import { usersAPI } from "../../../api/api";
 import {
   getDialogsFetchingState,

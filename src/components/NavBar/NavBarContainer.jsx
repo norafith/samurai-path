@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { changeNavBarOpenedStatusActionCreator as changeNavBarOpenedStatus } from "../../redux/navBarReducer";
+import { changeNavBarOpenedStatusActionCreator as changeNavBarOpenedStatus } from "../../redux/reducers/navBarReducer";
 import { getCurrUserId } from "../../redux/selectors/authSelector";
 import {
   getMobileStatus,

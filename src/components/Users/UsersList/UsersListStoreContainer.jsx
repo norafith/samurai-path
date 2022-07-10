@@ -4,7 +4,7 @@ import {
   changeCurrentPageControlOffsetAC as changeCurrentPageControlOffset,
   changeFollowedStatusThunkCreator as changeFollowedStatus,
   getUsersThunkCreator as getUsers,
-} from "../../../redux/usersReducer";
+} from "../../../redux/reducers/usersReducer";
 import UsersListApiContainer from "./UsersListApiContainer";
 
 function mapStateToProps(state) {

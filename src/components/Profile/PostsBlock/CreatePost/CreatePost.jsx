@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./CreatePost.module.css";
 import { Form } from "react-final-form";
-import createFormTest from "./../../../../validation/validation";
+import createFormTest from "../../../../validation/validation";
 import FieldInputContainer from "./../../../common/FieldInputContainer/FieldInputContainer";
 
 function CreatePost(props) {

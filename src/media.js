@@ -1,5 +1,8 @@
 import store from "./redux/redux-store";
-import { toggleNavBarMobileStatusActionCreator, removeNavBarMobileStatusActionCreator } from "./redux/navBarReducer";
+import {
+  toggleNavBarMobileStatusActionCreator,
+  removeNavBarMobileStatusActionCreator,
+} from "./redux/reducers/navBarReducer";
 
 function media() {
   if (window.innerWidth <= 850) {

@@ -1,4 +1,4 @@
-import { usersAPI } from "../api/api";
+import { usersAPI } from "../../api/api";
 
 const ADD_MESSAGE = "ADD-MESSAGE";
 const CHANGE_SEARCH_TEXT = "CHANGE-SEARCH-TEXT";

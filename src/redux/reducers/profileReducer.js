@@ -1,4 +1,4 @@
-import { profileAPI } from "../api/api";
+import { profileAPI } from "../../api/api";
 
 const ADD_POST = "ADD-POST";
 const SET_FETCHING_STATE = "SET_FETCHING_STATE_PROFILE";

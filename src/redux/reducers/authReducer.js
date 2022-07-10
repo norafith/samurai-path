@@ -1,4 +1,4 @@
-import { authAPI } from "../api/api";
+import { authAPI } from "../../api/api";
 import { FORM_ERROR } from "final-form";
 
 const SET_FETCHING_STATE = "SET_FETCHING_STATE_AUTH";

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Header from "./Header";
-import { changeNavBarOpenedStatusActionCreator as changeNavBarOpenedStatus } from "../../redux/navBarReducer";
+import { changeNavBarOpenedStatusActionCreator as changeNavBarOpenedStatus } from "../../redux/reducers/navBarReducer";
 import { getMobileStatus } from "../../redux/selectors/navBarSelector";
 
 function mapStateToProps(state) {

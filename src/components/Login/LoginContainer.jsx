@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Login from "./Login";
-import { loginAuthThunkCreator as loginAuth } from "../../redux/authReducer";
+import { loginAuthThunkCreator as loginAuth } from "../../redux/reducers/authReducer";
 import {
   getAuthState,
   getCurrUserId,

@@ -1,4 +1,4 @@
-import { usersAPI } from "../api/api";
+import { usersAPI } from "../../api/api";
 
 const LOAD_USERS = "LOAD_USERS";
 const CHANGE_FOLLOWED_STATUS = "CHANGE_FOLLOWED_STATUS";

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import App from "./App";
-import { initializeAppThunkCreator as initializeApp } from "../redux/appReducer";
+import { initializeAppThunkCreator as initializeApp } from "../redux/reducers/appReducer";
 import {
   getMobileStatus,
   getNavbarOpenedStatus,
@@ -16,7 +16,6 @@ class AppApiContainer extends React.Component {
   }
 
   render() {
-    debugger;
     if (!this.props.isAppInitialized) return <Preloader />;
     return <App {...this.props} />;
   }
