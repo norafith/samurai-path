@@ -8,7 +8,6 @@ import MusicContainer from "./Music/MusicContainer";
 import NewsContainer from "./News/NewsContainer";
 import SettingsContainer from "./Settings/SettingsContainer";
 import UsersContainer from "./Users/UsersContainer";
-// import PrivateRoute from "./common/PrivateRoute/PrivateRouteContainer";
 import ErrorPageContainer from "./ErrorPage/ErrorPageContainer";
 import LoginContainer from "./Login/LoginContainer";
 
@@ -29,62 +28,13 @@ function App(props) {
         <HeaderContainer />
         <NavBarContainer />
         <Routes>
-          <Route
-            path="/*"
-            element={
-              // <PrivateRoute>
-              <ErrorPageContainer />
-              // </PrivateRoute>
-            }
-          />
-          <Route
-            path="/profile/:id"
-            element={
-              // <PrivateRoute>
-              <ProfileContainer />
-              // </PrivateRoute>
-            }
-          />
-          <Route
-            path="/dialogs/*"
-            element={
-              // <PrivateRoute>
-              <DialogsContainer />
-              // </PrivateRoute>
-            }
-          />
-          <Route
-            path="/music"
-            element={
-              // <PrivateRoute>
-              <MusicContainer />
-              // </PrivateRoute>
-            }
-          />
-          <Route
-            path="/news"
-            element={
-              // <PrivateRoute>
-              <NewsContainer />
-              // </PrivateRoute>
-            }
-          />
-          <Route
-            path="/settings"
-            element={
-              // <PrivateRoute>
-              <SettingsContainer />
-              // </PrivateRoute>
-            }
-          />
-          <Route
-            path="/users"
-            element={
-              // <PrivateRoute>
-              <UsersContainer />
-              // </PrivateRoute>
-            }
-          />
+          <Route path="/*" element={<ErrorPageContainer />} />
+          <Route path="/profile/:id" element={<ProfileContainer />} />
+          <Route path="/dialogs/*" element={<DialogsContainer />} />
+          <Route path="/music" element={<MusicContainer />} />
+          <Route path="/news" element={<NewsContainer />} />
+          <Route path="/settings" element={<SettingsContainer />} />
+          <Route path="/users" element={<UsersContainer />} />
           <Route path="/login" element={<LoginContainer />} />
         </Routes>
       </div>

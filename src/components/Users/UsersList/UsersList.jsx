@@ -19,31 +19,6 @@ function UsersList(props) {
     );
   });
 
-  const pageControlElements = [];
-  for (
-    let i = 1 + props.currentPageControlOffset;
-    i <= 5 + props.currentPageControlOffset;
-    i++
-  ) {
-    let className = classes.pageControlButton;
-    if (props.currentPage === i) {
-      className += " " + classes.active;
-    }
-
-    pageControlElements.push(
-      <span
-        key={i}
-        className={className}
-        onClick={() => {
-          props.changeCurrentPage(i);
-          props.getUsers(i);
-        }}
-      >
-        {i}
-      </span>
-    );
-  }
-
   let mainClassName = classes.usersList;
 
   if (props.mobileStatus) mainClassName += " " + classes.mobile;
