@@ -6,20 +6,6 @@
   justify-content: center;
 }
 
-.pageControlButton {
-  font-size: 1.5em;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-.pageControlButton.active {
-  color: #e1ff3f;
-}
-
-.pageOffset {
-  cursor: pointer;
-}
-
 .friendsList.mobile {
   grid-template-columns: 0.1fr minmax(220px, 1fr) 0.1fr;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./UsersList.module.css";
 import User from "./User/User";
+import PageControl from "./../../common/PageControl/PageControl";
 
 function UsersList(props) {
   const usersElements = props.users.map((user) => {
@@ -49,21 +50,13 @@ function UsersList(props) {
 
   return (
     <main className={mainClassName}>
-      <div>
-        <span
-          className={classes.pageOffset}
-          onClick={() => props.changeCurrentPageControlOffset(false)}
-        >
-          {"<"}
-        </span>
-        {pageControlElements}
-        <span
-          className={classes.pageOffset}
-          onClick={() => props.changeCurrentPageControlOffset(true)}
-        >
-          {">"}
-        </span>
-      </div>
+      <PageControl
+        loadItems={props.getUsers}
+        currentPageControlOffset={props.currentPageControlOffset}
+        changeCurrentPage={props.changeCurrentPage}
+        changeCurrentPageControlOffset={props.changeCurrentPageControlOffset}
+        currentPage={props.currentPage}
+      />
       {usersElements}
     </main>
   );
