@@ -1,6 +1,6 @@
 import { authCurrUserThunkCreator } from "./authReducer";
 
-const APP_INITIALIZED = "APP_INITIALIZED";
+const APP_INITIALIZED = "app/APP_INITIALIZED";
 
 const initialState = {
   isInitialized: false,

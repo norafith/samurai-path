@@ -1,9 +1,9 @@
 import { profileAPI } from "../../api/api";
 
 const ADD_POST = "ADD-POST";
-const SET_FETCHING_STATE = "SET_FETCHING_STATE_PROFILE";
-const SET_PROFILE_DATA = "SET_PROFILE_DATA";
-const SET_STATUS = "SET_STATUS";
+const SET_FETCHING_STATE = "profile/SET_FETCHING_STATE";
+const SET_PROFILE_DATA = "profile/SET_PROFILE_DATA";
+const SET_STATUS = "profile/SET_STATUS";
 
 let initialState = {
   posts: {
@@ -131,24 +131,22 @@ function setStatusAC(status) {
 }
 
 function getProfileThunkCreator(id) {
-  return function getProfileThunk(dispatch, getState) {
+  return async function getProfileThunk(dispatch, getState) {
     dispatch(setFetchingStateAC(true));
-    return profileAPI.getProfile(id).then((result) => {
-      dispatch(setProfileDataAC(result));
-      dispatch(setFetchingStateAC(false));
-    });
+    const result = await profileAPI.getProfile(id);
+    dispatch(setProfileDataAC(result));
+    dispatch(setFetchingStateAC(false));
   };
 }
 
 function setStatusThunkCreator(status) {
-  return function setStatusThunk(dispatch, getState) {
-    return profileAPI.setStatus(status).then((result) => {
-      if (result.resultCode === 0) {
-        dispatch(setStatusAC(status));
-      } else {
-        throw new Error("Error when submitting new status.");
-      }
-    });
+  return async function setStatusThunk(dispatch, getState) {
+    const result = await profileAPI.setStatus(status);
+    if (result.resultCode === 0) {
+      dispatch(setStatusAC(status));
+    } else {
+      throw new Error("Error when submitting new status.");
+    }
   };
 }
 

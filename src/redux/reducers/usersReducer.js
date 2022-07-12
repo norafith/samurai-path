@@ -1,13 +1,14 @@
 import { usersAPI } from "../../api/api";
 
-const LOAD_USERS = "LOAD_USERS";
-const CHANGE_FOLLOWED_STATUS = "CHANGE_FOLLOWED_STATUS";
-const CHANGE_CURRENT_PAGE = "CHANGE_CURRENT_PAGE";
-const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
-const CHANGE_CURRENT_PAGE_CONTROL_OFFSET = "CHANGE_CURRENT_PAGE_CONTROL_OFFSET";
-const SET_FETCHING_STATE = "SET_FETCHING_STATE_USERS";
-const TOGGLE_USER_FOLLOWING_STATE = "TOGGLE_USER_FOLLOWING_STATE";
-const DISABLE_USER_FOLLOWING_STATE = "DISABLE_USER_FOLLOWING_STATE";
+const LOAD_USERS = "users/LOAD_USERS";
+const CHANGE_FOLLOWED_STATUS = "users/CHANGE_FOLLOWED_STATUS";
+const CHANGE_CURRENT_PAGE = "users/CHANGE_CURRENT_PAGE";
+const SET_TOTAL_COUNT = "users/SET_TOTAL_COUNT";
+const CHANGE_CURRENT_PAGE_CONTROL_OFFSET =
+  "users/CHANGE_CURRENT_PAGE_CONTROL_OFFSET";
+const SET_FETCHING_STATE = "users/SET_FETCHING_STATE";
+const TOGGLE_USER_FOLLOWING_STATE = "users/TOGGLE_USER_FOLLOWING_STATE";
+const DISABLE_USER_FOLLOWING_STATE = "users/DISABLE_USER_FOLLOWING_STATE";
 
 let initialState = {
   currentPage: 1,
@@ -145,26 +146,21 @@ function disableUserFollowingStateAC(userId) {
 }
 
 function getUsersThunkCreator(page) {
-  return function getUsersThunk(dispatch, getState) {
+  return async function getUsersThunk(dispatch, getState) {
     dispatch(setFetchingStateAC(true));
-    usersAPI.getUsers(page).then((result) => {
-      dispatch(loadUsersAC(result.items));
-      dispatch(setTotalCountAC(result.totalCount));
-      dispatch(setFetchingStateAC(false));
-    });
+    const result = await usersAPI.getUsers(page);
+    dispatch(loadUsersAC(result.items));
+    dispatch(setTotalCountAC(result.totalCount));
+    dispatch(setFetchingStateAC(false));
   };
 }
 
 function changeFollowedStatusThunkCreator(followed, id) {
-  return function changeFollowedStatusThunk(dispatch, getState) {
-    const currActionPromise = followed
-      ? usersAPI.unfollowUser(id)
-      : usersAPI.followUser(id);
+  return async function changeFollowedStatusThunk(dispatch, getState) {
     dispatch(toggleUserFollowingStateAC(id));
-    currActionPromise.then((result) => {
-      dispatch(changeFollowedStatusAC(id));
-      dispatch(disableUserFollowingStateAC(id));
-    });
+    await (followed ? usersAPI.unfollowUser(id) : usersAPI.followUser(id));
+    dispatch(changeFollowedStatusAC(id));
+    dispatch(disableUserFollowingStateAC(id));
   };
 }
 

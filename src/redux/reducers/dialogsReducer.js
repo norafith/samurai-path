@@ -1,9 +1,10 @@
 import { usersAPI } from "../../api/api";
 
-const ADD_MESSAGE = "ADD-MESSAGE";
-const CHANGE_SEARCH_TEXT = "CHANGE-SEARCH-TEXT";
-const SET_CHAT_OPTIONS = "SET_CHAT_OPTIONS";
-const SET_FETCHING_STATE = "SET_FETCHING_STATE_DIALOGS";
+const ADD_MESSAGE = "dialogs/ADD-MESSAGE";
+const CHANGE_SEARCH_TEXT = "dialogs/CHANGE-SEARCH-TEXT";
+const SET_CHAT_OPTIONS = "dialogs/SET_CHAT_OPTIONS";
+const SET_FETCHING_STATE = "dialogs/SET_FETCHING_STATE";
+const DELETE_MESSAGE = "dialogs/DELETE_MESSAGE";
 
 const initialState = {
   chatOptions: [],
@@ -74,6 +75,23 @@ function dialogsReducer(state = initialState, action) {
       return stateCopy;
     }
 
+    case DELETE_MESSAGE: {
+      let stateCopy = { ...state };
+      stateCopy.messages = { ...state.messages };
+      stateCopy.messages.messagesList = [...state.messages.messagesList];
+      let messageIndex;
+      for (let index in stateCopy.messages.messagesList) {
+        if (
+          stateCopy.messages.messagesList[index].messageID === action.messageId
+        ) {
+          messageIndex = index;
+          break;
+        }
+      }
+      stateCopy.messages.messagesList.splice(messageIndex, 1);
+      return stateCopy;
+    }
+
     default: {
       return state;
     }
@@ -109,12 +127,18 @@ function setFetchingStateAC(fetchingState) {
 }
 
 function getFriendsThunkCreator() {
-  return function getFriendsThunk(dispatch, getState) {
+  return async function getFriendsThunk(dispatch, getState) {
     dispatch(setFetchingStateAC(true));
-    usersAPI.getFriends().then((result) => {
-      dispatch(setChatOptionsAC(result.items));
-      dispatch(setFetchingStateAC(false));
-    });
+    const result = await usersAPI.getFriends();
+    dispatch(setChatOptionsAC(result.items));
+    dispatch(setFetchingStateAC(false));
+  };
+}
+
+function deleteMessageAC(messageId) {
+  return {
+    type: DELETE_MESSAGE,
+    messageId,
   };
 }
 
@@ -125,4 +149,5 @@ export {
   changeSearchTextActionCreator,
   setFetchingStateAC,
   getFriendsThunkCreator,
+  deleteMessageAC,
 };

@@ -1,9 +1,9 @@
 import { authAPI } from "../../api/api";
 import { FORM_ERROR } from "final-form";
 
-const SET_FETCHING_STATE = "SET_FETCHING_STATE_AUTH";
-const SET_CURR_USER_DATA = "SET_CURR_USER_DATA";
-const SET_AUTH_STATE = "SET_AUTH_STATE";
+const SET_FETCHING_STATE = "auth/SET_FETCHING_STATE";
+const SET_CURR_USER_DATA = "auth/SET_CURR_USER_DATA";
+const SET_AUTH_STATE = "auth/SET_AUTH_STATE";
 
 let initialState = {
   fetchingState: null,
@@ -59,42 +59,39 @@ function setAuthStateAC(authState) {
 }
 
 function authCurrUserThunkCreator() {
-  return function authCurrUserThunk(dispatch, getState) {
+  return async function authCurrUserThunk(dispatch, getState) {
     dispatch(setFetchingStateAC(true));
-    return authAPI.authCurrUser().then((result) => {
-      if (result.resultCode === 0) {
-        dispatch(setCurrUserDataAC(result));
-        dispatch(setAuthStateAC(true));
-      } else {
-        dispatch(setAuthStateAC(false));
-      }
+    const result = await authAPI.authCurrUser();
+    if (result.resultCode === 0) {
+      dispatch(setCurrUserDataAC(result));
+      dispatch(setAuthStateAC(true));
+    } else {
+      dispatch(setAuthStateAC(false));
+    }
 
-      dispatch(setFetchingStateAC(false));
-    });
+    dispatch(setFetchingStateAC(false));
   };
 }
 
 function loginAuthThunkCreator({ login, password, rememberMe = false }) {
-  return function loginAuthThunk(dispatch, getState) {
-    return authAPI.loginAuth(login, password, rememberMe).then((result) => {
-      if (result.resultCode === 0) {
-        dispatch(setCurrUserDataAC(result));
-        dispatch(setAuthStateAC(true));
-      } else {
-        return { [FORM_ERROR]: result.messages[0] };
-      }
-    });
+  return async function loginAuthThunk(dispatch, getState) {
+    const result = await authAPI.loginAuth(login, password, rememberMe);
+    if (result.resultCode === 0) {
+      dispatch(setCurrUserDataAC(result));
+      dispatch(setAuthStateAC(true));
+    } else {
+      return { [FORM_ERROR]: result.messages[0] };
+    }
   };
 }
 
 function logoutThunkCreator() {
-  return function logoutThunk(dispatch, getState) {
-    return authAPI.logout().then((result) => {
-      if (result.resultCode === 0) {
-        dispatch(setCurrUserDataAC(null));
-        dispatch(setAuthStateAC(false));
-      }
-    });
+  return async function logoutThunk(dispatch, getState) {
+    const result = await authAPI.logout();
+    if (result.resultCode === 0) {
+      dispatch(setCurrUserDataAC(null));
+      dispatch(setAuthStateAC(false));
+    }
   };
 }
 
