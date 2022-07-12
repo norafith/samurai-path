@@ -4,10 +4,8 @@ import userImg from "../../../../assets/user.png";
 import { NavLink } from "react-router-dom";
 
 function User(props) {
-  // let onlineStatusClass = classes.onlineStatus;
-  // if (props.onlineStatus) {
-  //   onlineStatusClass += " " + classes.active;
-  // }
+  let buttonClass = classes.followButton + " ";
+  buttonClass += props.followed ? classes.unfollow : classes.follow;
   return (
     <div className={classes.user}>
       <div className={classes.content}>
@@ -26,10 +24,11 @@ function User(props) {
           <div className={classes.writeMessage}>Write message</div>
         </div>
       </div>
-      <div className={classes.additional}>
+      <div className={classes.additionalBlock}>
         <button
           disabled={props.followingUsers.includes(props.id)}
           onClick={() => props.changeFollowedStatus(props.followed, props.id)}
+          className={buttonClass}
         >
           {props.followed ? "Unfollow" : "Follow"}
         </button>

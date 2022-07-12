@@ -38,7 +38,38 @@
   cursor: pointer;
 }
 
+.additionalBlock {
+  text-align: center;
+}
 
-.id {
-  color: #e1ff3f;
+.additionalBlock > * {
+  margin: 5px 0;
+}
+
+.followButton {
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  width: 95px;
+  padding: 5px;
+  border-radius: 25px;
+}
+
+.followButton[disabled] {
+  background-color: grey !important;
+  color: black !important;
+  border: 2px solid black !important;
+}
+
+.followButton.unfollow {
+  background-color:red;
+  color: #F4F3EE;
+  border: 2px solid #F4F3EE;
+}
+
+.followButton.follow {
+  background-color: #e1ff3f;
+  color: black;
+  border: 2px solid black;
 }
