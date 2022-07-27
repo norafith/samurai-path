@@ -3,13 +3,21 @@ import {
   toggleNavBarMobileStatusActionCreator,
   removeNavBarMobileStatusActionCreator,
 } from "./redux/reducers/navBarReducer";
+import { getMobileStatus } from "./redux/selectors/navBarSelector";
+
+const minimalDesktopWidth = 850;
 
 function media() {
-  if (window.innerWidth <= 850) {
+  if (
+    window.innerWidth <= minimalDesktopWidth &&
+    !getMobileStatus(store.getState())
+  ) {
     store.dispatch(toggleNavBarMobileStatusActionCreator());
-  } else {
+  } else if (
+    window.innerWidth > minimalDesktopWidth &&
+    getMobileStatus(store.getState())
+  ) {
     store.dispatch(removeNavBarMobileStatusActionCreator());
   }
 }
-
 export default media;

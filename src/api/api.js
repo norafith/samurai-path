@@ -31,6 +31,19 @@ const profileAPI = {
       })
       .then((result) => result.data);
   },
+
+  changeAvatarPhoto(avatar) {
+    const formData = new FormData();
+    formData.append("image", avatar);
+
+    return apiInstance
+      .put("profile/photo", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((result) => result.data);
+  },
 };
 
 const usersAPI = {

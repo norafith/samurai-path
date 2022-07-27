@@ -10,6 +10,7 @@ import {
   setProfileDataAC as setProfileData,
   getProfileThunkCreator as getProfile,
   setStatusThunkCreator as setStatus,
+  changeAvatarPhotoThunkCreator as changeAvatarPhoto,
 } from "../../redux/reducers/profileReducer";
 import {
   getPostsList,
@@ -57,6 +58,7 @@ const mapDispatchToProps = {
   setProfileData,
   getProfile,
   setStatus,
+  changeAvatarPhoto,
 };
 
 const ProfileSuperContainer = compose(

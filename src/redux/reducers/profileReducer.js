@@ -1,9 +1,10 @@
 import { profileAPI } from "../../api/api";
 
-const ADD_POST = "ADD-POST";
+const ADD_POST = "profile/ADD_POST";
 const SET_FETCHING_STATE = "profile/SET_FETCHING_STATE";
 const SET_PROFILE_DATA = "profile/SET_PROFILE_DATA";
 const SET_STATUS = "profile/SET_STATUS";
+const SET_AVATAR_PHOTO = "profile/SET_AVATAR_PHOTO";
 
 let initialState = {
   posts: {
@@ -96,6 +97,14 @@ function profileReducer(state = initialState, action) {
       return stateCopy;
     }
 
+    case SET_AVATAR_PHOTO: {
+      debugger;
+      const stateCopy = { ...state };
+      stateCopy.profileData = { ...stateCopy.profileData };
+      stateCopy.profileData.photos = { ...action.photos };
+      return stateCopy;
+    }
+
     default: {
       return state;
     }
@@ -150,6 +159,23 @@ function setStatusThunkCreator(status) {
   };
 }
 
+function changeAvatarPhotoThunkCreator(avatar) {
+  return async function changeAvatarPhotoThunk(dispatch, getState) {
+    const result = await profileAPI.changeAvatarPhoto(avatar);
+    if (result.resultCode === 0) {
+      dispatch(setAvatarPhotoAC(result.data.photos));
+    } else {
+      throw new Error("Error when changing avatar photo.");
+    }
+  };
+}
+
+function setAvatarPhotoAC(photos) {
+  return {
+    type: SET_AVATAR_PHOTO,
+    photos,
+  };
+}
 export {
   profileReducer,
   addPostActionCreator,
@@ -157,4 +183,5 @@ export {
   setProfileDataAC,
   getProfileThunkCreator,
   setStatusThunkCreator,
+  changeAvatarPhotoThunkCreator,
 };
